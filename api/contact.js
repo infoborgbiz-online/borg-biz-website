@@ -9,10 +9,10 @@ module.exports = async function handler(req, res) {
     const { naam, email, dienst, bericht } = req.body;
     if (!naam || !email) return res.status(400).json({ error: 'Naam en email zijn verplicht' });
 
-    const ODOO_URL      = process.env.ODOO_URL;
-    const ODOO_DB       = process.env.ODOO_DB;
-    const ODOO_USERNAME = process.env.ODOO_USERNAME;
-    const ODOO_API_KEY  = process.env.ODOO_API_KEY;
+    const ODOO_URL      = (process.env.ODOO_URL      || '').trim();
+    const ODOO_DB       = (process.env.ODOO_DB       || '').trim();
+    const ODOO_USERNAME = (process.env.ODOO_USERNAME || '').trim();
+    const ODOO_API_KEY  = (process.env.ODOO_API_KEY  || '').trim();
 
     console.log('URL:', ODOO_URL || 'ONTBREEKT');
     console.log('DB:', ODOO_DB || 'ONTBREEKT');
