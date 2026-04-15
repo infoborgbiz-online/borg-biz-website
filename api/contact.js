@@ -14,13 +14,11 @@ module.exports = async function handler(req, res) {
     const ODOO_USERNAME = process.env.ODOO_USERNAME;
     const ODOO_API_KEY  = process.env.ODOO_API_KEY;
 
-    // Log env vars aanwezig (zonder waarden te tonen)
-    console.log('ENV check:', {
-        url:      ODOO_URL || 'ONTBREEKT',
-        db:       ODOO_DB || 'ONTBREEKT',
-        user:     ODOO_USERNAME || 'ONTBREEKT',
-        keyLen:   ODOO_API_KEY ? ODOO_API_KEY.trim().length : 'ONTBREEKT'
-    });
+    console.log('URL:', ODOO_URL || 'ONTBREEKT');
+    console.log('DB:', ODOO_DB || 'ONTBREEKT');
+    console.log('USER:', ODOO_USERNAME || 'ONTBREEKT');
+    console.log('KEY_LEN:', ODOO_API_KEY ? ODOO_API_KEY.trim().length : 'ONTBREEKT');
+    console.log('KEY_START:', ODOO_API_KEY ? ODOO_API_KEY.trim().substring(0,6) : 'ONTBREEKT');
 
     if (!ODOO_URL || !ODOO_DB || !ODOO_USERNAME || !ODOO_API_KEY) {
         return res.status(500).json({ error: 'Serverconfiguratie ontbreekt' });
