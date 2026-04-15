@@ -1056,18 +1056,42 @@
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
 
-    contactForm.addEventListener('submit', function (e) {
+    contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
-        const naam  = document.getElementById('naam').value.trim();
-        const email = document.getElementById('email').value.trim();
+        const naam    = document.getElementById('naam').value.trim();
+        const email   = document.getElementById('email').value.trim();
+        const dienst  = document.getElementById('dienst').value;
+        const bericht = document.getElementById('bericht').value.trim();
         const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const submitBtn = contactForm.querySelector('.btn-submit');
 
-        if (!naam) { document.getElementById('naam').focus(); return; }
+        if (!naam)  { document.getElementById('naam').focus();  return; }
         if (!email || !emailRe.test(email)) { document.getElementById('email').focus(); return; }
 
-        // Hide form, show success message
-        contactForm.style.display = 'none';
-        formSuccess.style.display = 'block';
+        // Verstuur knop uitschakelen tijdens verzenden
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Versturen...';
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ naam, email, dienst, bericht })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                contactForm.style.display = 'none';
+                formSuccess.style.display = 'block';
+            } else {
+                throw new Error(data.error || 'Onbekende fout');
+            }
+        } catch (err) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Verstuur bericht';
+            alert('Er is iets misgegaan. Bel ons op 06 57 80 32 73 of stuur een WhatsApp.');
+        }
     });
 </script>
 </body>
