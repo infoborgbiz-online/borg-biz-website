@@ -77,7 +77,8 @@ export default async function handler(req, res) {
                         contact_name: naam,
                         email_from:   email,
                         description:  omschrijving,
-                        type:         'lead'
+                        type:         'lead',
+                        company_id:   3
                     }],
                     kwargs: {}
                 }
