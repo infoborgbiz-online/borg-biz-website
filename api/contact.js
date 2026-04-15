@@ -1,98 +1,110 @@
 export default async function handler(req, res) {
-    // CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-    if (req.method === 'OPTIONS') {
-        return res.status(200).end();
-    }
-
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+    if (req.method === 'OPTIONS') return res.status(200).end();
+    if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
     const { naam, email, dienst, bericht } = req.body;
 
-    if (!naam || !email) {
-        return res.status(400).json({ error: 'Naam en email zijn verplicht' });
-    }
+    if (!naam || !email) return res.status(400).json({ error: 'Naam en email zijn verplicht' });
 
-    // Simpele email validatie
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRe.test(email)) {
-        return res.status(400).json({ error: 'Ongeldig e-mailadres' });
-    }
+    if (!emailRe.test(email)) return res.status(400).json({ error: 'Ongeldig e-mailadres' });
 
     const ODOO_URL      = process.env.ODOO_URL;
     const ODOO_DB       = process.env.ODOO_DB;
     const ODOO_USERNAME = process.env.ODOO_USERNAME;
     const ODOO_API_KEY  = process.env.ODOO_API_KEY;
 
+    // Controleer of alle variabelen aanwezig zijn
+    if (!ODOO_URL || !ODOO_DB || !ODOO_USERNAME || !ODOO_API_KEY) {
+        console.error('Ontbrekende omgevingsvariabelen:', {
+            ODOO_URL: !!ODOO_URL,
+            ODOO_DB: !!ODOO_DB,
+            ODOO_USERNAME: !!ODOO_USERNAME,
+            ODOO_API_KEY: !!ODOO_API_KEY
+        });
+        return res.status(500).json({ error: 'Serverconfiguratie ontbreekt' });
+    }
+
     try {
-        // Stap 1: Authenticeren bij Odoo
-        const authRes = await fetch(`${ODOO_URL}/web/session/authenticate`, {
+        // Stap 1: Authenticeren via XML-RPC (meest betrouwbaar voor Odoo Online)
+        const authXml = `<?xml version="1.0"?>
+<methodCall>
+  <methodName>authenticate</methodName>
+  <params>
+    <param><value><string>${ODOO_DB}</string></value></param>
+    <param><value><string>${ODOO_USERNAME}</string></value></param>
+    <param><value><string>${ODOO_API_KEY}</string></value></param>
+    <param><value><struct></struct></value></param>
+  </params>
+</methodCall>`;
+
+        const authRes = await fetch(`${ODOO_URL}/xmlrpc/2/common`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                jsonrpc: '2.0',
-                method: 'call',
-                id: 1,
-                params: {
-                    db:       ODOO_DB,
-                    login:    ODOO_USERNAME,
-                    password: ODOO_API_KEY
-                }
-            })
+            headers: { 'Content-Type': 'text/xml' },
+            body: authXml
         });
 
-        const authData = await authRes.json();
+        const authText = await authRes.text();
+        console.log('Auth response:', authText.substring(0, 300));
 
-        if (!authData.result || !authData.result.uid) {
-            console.error('Odoo auth mislukt:', authData);
-            throw new Error('Odoo authenticatie mislukt');
+        // UID uit XML-RPC response halen
+        const uidMatch = authText.match(/<int>(\d+)<\/int>/);
+        if (!uidMatch) {
+            console.error('Geen UID in response:', authText);
+            throw new Error('Odoo authenticatie mislukt — controleer gebruikersnaam en API key');
         }
 
-        const sessionCookie = authRes.headers.get('set-cookie');
+        const uid = parseInt(uidMatch[1]);
+        console.log('Ingelogd als uid:', uid);
 
-        // Stap 2: Lead aanmaken in Odoo CRM
-        const leadNaam   = `Website aanvraag - ${naam}`;
-        const omschrijving = `Dienst: ${dienst || 'Niet opgegeven'}\n\nBericht:\n${bericht || 'Geen bericht'}`;
+        // Stap 2: Lead aanmaken via XML-RPC
+        const leadNaam       = `Website aanvraag - ${naam}`;
+        const omschrijving   = `Dienst: ${dienst || 'Niet opgegeven'}\n\nBericht:\n${bericht || 'Geen bericht'}`;
 
-        const leadRes = await fetch(`${ODOO_URL}/web/dataset/call_kw`, {
+        const createXml = `<?xml version="1.0"?>
+<methodCall>
+  <methodName>execute_kw</methodName>
+  <params>
+    <param><value><string>${ODOO_DB}</string></value></param>
+    <param><value><int>${uid}</int></value></param>
+    <param><value><string>${ODOO_API_KEY}</string></value></param>
+    <param><value><string>crm.lead</string></value></param>
+    <param><value><string>create</string></value></param>
+    <param><value><array><data>
+      <value><struct>
+        <member><name>name</name><value><string>${leadNaam}</string></value></member>
+        <member><name>contact_name</name><value><string>${naam}</string></value></member>
+        <member><name>email_from</name><value><string>${email}</string></value></member>
+        <member><name>description</name><value><string>${omschrijving}</string></value></member>
+        <member><name>type</name><value><string>lead</string></value></member>
+        <member><name>company_id</name><value><int>3</int></value></member>
+      </struct></value>
+    </data></array></value></param>
+    <param><value><struct></struct></value></param>
+  </params>
+</methodCall>`;
+
+        const createRes = await fetch(`${ODOO_URL}/xmlrpc/2/object`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Cookie': sessionCookie
-            },
-            body: JSON.stringify({
-                jsonrpc: '2.0',
-                method: 'call',
-                id: 2,
-                params: {
-                    model: 'crm.lead',
-                    method: 'create',
-                    args: [{
-                        name:         leadNaam,
-                        contact_name: naam,
-                        email_from:   email,
-                        description:  omschrijving,
-                        type:         'lead',
-                        company_id:   3
-                    }],
-                    kwargs: {}
-                }
-            })
+            headers: { 'Content-Type': 'text/xml' },
+            body: createXml
         });
 
-        const leadData = await leadRes.json();
+        const createText = await createRes.text();
+        console.log('Create response:', createText.substring(0, 300));
 
-        if (leadData.error) {
-            console.error('Odoo lead error:', leadData.error);
-            throw new Error(leadData.error.data?.message || 'Lead aanmaken mislukt');
+        const leadIdMatch = createText.match(/<int>(\d+)<\/int>/);
+        if (!leadIdMatch) {
+            console.error('Lead aanmaken mislukt:', createText);
+            throw new Error('Lead aanmaken mislukt');
         }
 
-        return res.status(200).json({ success: true, lead_id: leadData.result });
+        console.log('Lead aangemaakt met ID:', leadIdMatch[1]);
+        return res.status(200).json({ success: true, lead_id: parseInt(leadIdMatch[1]) });
 
     } catch (error) {
         console.error('Contact API fout:', error.message);
