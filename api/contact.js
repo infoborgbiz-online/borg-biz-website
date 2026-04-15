@@ -49,7 +49,13 @@ export default async function handler(req, res) {
         });
 
         const authText = await authRes.text();
-        console.log('Auth response:', authText.substring(0, 300));
+        console.log('Auth response volledig:', authText);
+
+        // Controleer op false (verkeerde credentials)
+        if (authText.includes('<boolean>0</boolean>') || authText.includes('<value><boolean>0')) {
+            console.error('Verkeerde credentials - DB, gebruikersnaam of API key klopt niet');
+            throw new Error('Verkeerde Odoo credentials');
+        }
 
         // UID uit XML-RPC response halen
         const uidMatch = authText.match(/<int>(\d+)<\/int>/);
