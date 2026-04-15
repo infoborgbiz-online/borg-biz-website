@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Borg Biz helpt lokale ondernemers in Emmen met websites, SEO, CRM, marketing en meer. Alles digitaal op orde, zonder gedoe.">
+    <meta name="keywords" content="website bouwen Emmen, SEO Emmen, CRM lokale ondernemer, digitale marketing Emmen, Borg Biz">
+    <title>Borg Biz — Uw Digitale Groei Partner in Emmen</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        :root {
+            --blue-900: #1E3A8A;
+            --blue-700: #1D4ED8;
+            --blue-500: #3B82F6;
+            --blue-100: #DBEAFE;
+            --white:   #FFFFFF;
+            --dark:    #111827;
+            --gray-800:#1F2937;
+            --gray-600:#4B5563;
+            --gray-100:#F3F4F6;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ======= HEADER ======= */
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(17,24,39,0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 1rem 2rem;
+        }
+        .header-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.5rem; font-weight: 800; color: white;
+            text-decoration: none; letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--blue-500); }
+        .nav-links {
+            display: flex; align-items: center; gap: 2rem;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.75); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: white; }
+        .btn-bel {
+            background: var(--blue-500); color: white;
+            padding: 0.6rem 1.4rem; border-radius: 8px;
+            text-decoration: none; font-weight: 600; font-size: 0.9rem;
+            transition: background 0.2s, transform 0.2s;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-bel:hover { background: var(--blue-700); transform: translateY(-1px); }
+        .mobile-menu-btn {
+            display: none; background: none; border: none;
+            color: white; font-size: 1.4rem; cursor: pointer; padding: 0.25rem;
+        }
+
+        /* ======= HERO ======= */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 55%, #1D4ED8 100%);
+            display: flex; align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative; overflow: hidden;
+        }
+        #hero::before {
+            content: ''; position: absolute;
+            top: -30%; right: -15%; width: 650px; height: 650px;
+            background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        #hero::after {
+            content: ''; position: absolute;
+            bottom: -25%; left: -10%; width: 450px; height: 450px;
+            background: radial-gradient(circle, rgba(30,58,138,0.4) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 4rem; align-items: center;
+            position: relative; z-index: 1;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(59,130,246,0.18);
+            border: 1px solid rgba(59,130,246,0.4);
+            color: #BFDBFE; padding: 0.4rem 1rem;
+            border-radius: 100px; font-size: 0.78rem; font-weight: 700;
+            margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.06em;
+        }
+        .hero-title {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 900; color: white;
+            line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;
+        }
+        .hero-title span {
+            background: linear-gradient(135deg, #60A5FA, #93C5FD);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: 1.05rem; color: rgba(255,255,255,0.72);
+            margin-bottom: 2.5rem; line-height: 1.75; max-width: 480px;
+        }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--blue-500); color: white;
+            padding: 0.9rem 2rem; border-radius: 10px;
+            text-decoration: none; font-weight: 700; font-size: 1rem;
+            transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-primary:hover {
+            background: var(--blue-700); transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(59,130,246,0.4);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1); color: white;
+            padding: 0.9rem 2rem; border-radius: 10px;
+            text-decoration: none; font-weight: 600; font-size: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+        .hero-stats {
+            display: flex; gap: 2rem; margin-top: 3rem;
+            padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.14);
+        }
+        .stat-number { font-size: 1.8rem; font-weight: 800; color: white; }
+        .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 0.15rem; }
+        .hero-visual { display: flex; justify-content: center; }
+        .hero-card {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 20px; padding: 2rem;
+            width: 100%; max-width: 400px;
+        }
+        .hero-card-label {
+            color: rgba(255,255,255,0.5); font-size: 0.72rem;
+            text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;
+        }
+        .svc-list { list-style: none; }
+        .svc-list li {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+            color: rgba(255,255,255,0.9); font-size: 0.92rem;
+        }
+        .svc-list li:last-child { border-bottom: none; }
+        .svc-icon {
+            width: 32px; height: 32px; background: rgba(59,130,246,0.22);
+            border-radius: 8px; display: flex; align-items: center;
+            justify-content: center; color: #60A5FA; font-size: 0.8rem; flex-shrink: 0;
+        }
+
+        /* ======= SECTIONS ======= */
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem;
+            font-weight: 700; color: var(--blue-500); margin-bottom: 0.6rem;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800;
+            color: var(--dark); margin-bottom: 1rem;
+            letter-spacing: -0.5px; line-height: 1.2;
+        }
+        .section-subtitle {
+            font-size: 1rem; color: var(--gray-600);
+            max-width: 580px; line-height: 1.75;
+        }
+
+        /* ======= DIENSTEN ======= */
+        #diensten { background: var(--gray-100); }
+        .diensten-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem; margin-top: 3rem;
+        }
+        .dienst-card {
+            background: white; border-radius: 16px; padding: 2rem;
+            border: 1px solid #E5E7EB; transition: all 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .dienst-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--blue-500), var(--blue-700));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .dienst-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--blue-100);
+        }
+        .dienst-card:hover::before { opacity: 1; }
+        .dienst-icon {
+            width: 48px; height: 48px; background: var(--blue-100);
+            border-radius: 12px; display: flex; align-items: center;
+            justify-content: center; color: var(--blue-700);
+            font-size: 1.2rem; margin-bottom: 1.25rem;
+        }
+        .dienst-naam { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+        .dienst-desc { font-size: 0.88rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 1rem; }
+        .dienst-prijs {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            background: var(--blue-100); color: var(--blue-700);
+            font-size: 0.78rem; font-weight: 600;
+            padding: 0.25rem 0.75rem; border-radius: 100px;
+        }
+
+        /* ======= OVER ONS ======= */
+        #over-ons { background: white; }
+        .over-ons-inner {
+            display: grid; grid-template-columns: 1fr 2fr;
+            gap: 4rem; align-items: center;
+        }
+        .eigenaar-card {
+            background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
+            border-radius: 20px; padding: 2.5rem;
+            text-align: center; color: white;
+        }
+        .eigenaar-avatar {
+            width: 140px; height: 140px;
+            border-radius: 50%; display: block;
+            margin: 0 auto 1.5rem;
+            border: 4px solid rgba(255,255,255,0.35);
+            object-fit: cover; object-position: top;
+            background: rgba(255,255,255,0.14);
+        }
+        .eigenaar-naam { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .eigenaar-titel { font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-bottom: 1rem; }
+        .eigenaar-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; }
+        .tag {
+            background: rgba(255,255,255,0.14); color: white;
+            font-size: 0.73rem; padding: 0.25rem 0.75rem; border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .over-ons-text h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 1.25rem; letter-spacing: -0.5px; line-height: 1.25; }
+        .over-ons-text p { color: var(--gray-600); line-height: 1.8; margin-bottom: 1rem; }
+        .values-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1rem; margin-top: 2rem;
+        }
+        .value-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+        .value-icon {
+            width: 36px; height: 36px; background: var(--blue-100);
+            border-radius: 8px; display: flex; align-items: center;
+            justify-content: center; color: var(--blue-700);
+            flex-shrink: 0; font-size: 0.88rem;
+        }
+        .value-title { font-weight: 600; font-size: 0.88rem; color: var(--dark); }
+        .value-desc { font-size: 0.78rem; color: var(--gray-600); margin-top: 0.15rem; }
+
+        /* ======= OPENINGSTIJDEN ======= */
+        #openingstijden { background: var(--gray-100); }
+        .tijden-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+        .tijden-tabel {
+            background: white; border-radius: 16px; padding: 2rem;
+            border: 1px solid #E5E7EB;
+        }
+        .tijden-tabel h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .tijden-row {
+            display: flex; justify-content: space-between;
+            padding: 0.7rem 0; border-bottom: 1px solid #F3F4F6; font-size: 0.9rem;
+        }
+        .tijden-row:last-of-type { border-bottom: none; }
+        .dag { font-weight: 500; }
+        .tijd { color: var(--gray-600); }
+        .tijd.gesloten { color: #EF4444; font-weight: 500; }
+        .tijden-note { font-size: 0.82rem; color: var(--gray-600); margin-top: 1.25rem; display: flex; align-items: center; gap: 0.4rem; }
+        .maps-wrap { border-radius: 16px; overflow: hidden; height: 100%; min-height: 350px; border: 1px solid #E5E7EB; }
+        .maps-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+        /* ======= REVIEWS ======= */
+        #reviews { background: white; }
+        .reviews-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.5rem; margin: 3rem 0 2rem;
+        }
+        .review-card {
+            background: var(--gray-100); border-radius: 16px; padding: 2rem;
+            border: 1px solid #E5E7EB; transition: all 0.2s;
+        }
+        .review-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+        .review-stars { color: #F59E0B; margin-bottom: 1rem; font-size: 0.9rem; }
+        .review-tekst { font-size: 0.93rem; color: var(--gray-600); line-height: 1.7; font-style: italic; margin-bottom: 1.5rem; }
+        .review-auteur { display: flex; align-items: center; gap: 0.75rem; }
+        .review-avatar {
+            width: 40px; height: 40px; background: var(--blue-900);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: white; font-weight: 700; font-size: 0.9rem;
+        }
+        .review-naam { font-weight: 600; font-size: 0.88rem; }
+        .review-bron { font-size: 0.75rem; color: var(--gray-600); }
+        .reviews-cta { text-align: center; }
+
+        /* ======= FAQ ======= */
+        #faq { background: var(--gray-100); }
+        .faq-list { margin-top: 3rem; max-width: 800px; }
+        .faq-item {
+            background: white; border-radius: 12px; margin-bottom: 0.75rem;
+            border: 1px solid #E5E7EB; overflow: hidden;
+        }
+        .faq-vraag {
+            width: 100%; background: none; border: none; padding: 1.2rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+            cursor: pointer; font-size: 0.97rem; font-weight: 600; color: var(--dark);
+            text-align: left; font-family: 'Inter', sans-serif; transition: background 0.2s;
+        }
+        .faq-vraag:hover { background: var(--gray-100); }
+        .faq-icon { color: var(--blue-500); transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+        .faq-item.open .faq-icon { transform: rotate(180deg); }
+        .faq-antwoord { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-antwoord-inner { padding: 0 1.5rem 1.25rem; color: var(--gray-600); font-size: 0.92rem; line-height: 1.75; }
+
+        /* ======= CONTACT ======= */
+        #contact { background: white; }
+        .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .contact-info h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; letter-spacing: -0.5px; }
+        .contact-info > p { color: var(--gray-600); margin-bottom: 2rem; }
+        .contact-items { display: flex; flex-direction: column; gap: 0.75rem; }
+        .contact-item {
+            display: flex; align-items: center; gap: 1rem; padding: 1rem;
+            background: var(--gray-100); border-radius: 12px; text-decoration: none;
+            color: var(--dark); transition: all 0.2s; border: 1px solid transparent;
+        }
+        .contact-item:hover { border-color: var(--blue-500); background: var(--blue-100); }
+        .contact-item-icon {
+            width: 44px; height: 44px; background: var(--blue-900);
+            border-radius: 10px; display: flex; align-items: center;
+            justify-content: center; color: white; font-size: 1rem; flex-shrink: 0;
+        }
+        .contact-item-label { font-size: 0.8rem; color: var(--gray-600); }
+        .contact-item-waarde { font-weight: 600; font-size: 0.92rem; }
+        .contact-form {
+            background: var(--gray-100); border-radius: 20px;
+            padding: 2.5rem; border: 1px solid #E5E7EB;
+        }
+        .contact-form h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.1rem; }
+        .form-group label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%; padding: 0.75rem 1rem;
+            border: 1px solid #D1D5DB; border-radius: 8px;
+            font-size: 0.93rem; font-family: 'Inter', sans-serif;
+            background: white; color: var(--dark);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none; border-color: var(--blue-500);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+        }
+        .form-group textarea { resize: vertical; min-height: 110px; }
+        .btn-submit {
+            width: 100%; background: var(--blue-900); color: white;
+            padding: 1rem; border: none; border-radius: 10px;
+            font-size: 0.97rem; font-weight: 700; cursor: pointer;
+            font-family: 'Inter', sans-serif; transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        }
+        .btn-submit:hover { background: var(--blue-700); transform: translateY(-1px); }
+        .form-success {
+            display: none; text-align: center; padding: 2rem;
+            color: #15803D; background: #F0FDF4; border-radius: 12px;
+            border: 1px solid #BBF7D0; font-weight: 600;
+        }
+
+        /* ======= FOOTER ======= */
+        footer { background: var(--dark); color: white; padding: 3.5rem 2rem 2rem; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; }
+        .footer-top {
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 2rem;
+        }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; }
+        .footer-logo span { color: var(--blue-500); }
+        .footer-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
+        .footer-col h4 {
+            font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: rgba(255,255,255,0.45);
+            margin-bottom: 1rem;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.65); text-decoration: none;
+            font-size: 0.88rem; transition: color 0.2s;
+        }
+        .footer-col ul li a:hover { color: white; }
+        .footer-bottom {
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-bottom p { font-size: 0.83rem; color: rgba(255,255,255,0.4); }
+        .footer-bottom a { color: var(--blue-500); text-decoration: none; }
+
+        /* ======= WHATSAPP STICKY ======= */
+        .wa-sticky {
+            position: fixed; bottom: 2rem; right: 2rem;
+            z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem;
+        }
+        .wa-tooltip {
+            background: white; color: var(--dark); padding: 0.55rem 1rem;
+            border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12); white-space: nowrap;
+            opacity: 0; transform: translateX(8px); transition: all 0.3s; pointer-events: none;
+        }
+        .wa-sticky:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+        .wa-btn {
+            width: 58px; height: 58px; background: #25D366; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.5rem; text-decoration: none;
+            box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+            transition: all 0.3s; animation: waPulse 2.5s infinite;
+        }
+        .wa-btn:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
+        @keyframes waPulse {
+            0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
+            50%      { box-shadow: 0 6px 40px rgba(37,211,102,0.7); }
+        }
+
+        /* ======= COOKIE BANNER ======= */
+        .cookie-banner {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: #0F172A; color: white; padding: 1.1rem 2rem;
+            z-index: 9999; display: flex; align-items: center;
+            justify-content: space-between; gap: 2rem;
+            box-shadow: 0 -4px 30px rgba(0,0,0,0.3);
+            transform: translateY(100%); transition: transform 0.4s ease;
+        }
+        .cookie-banner.show { transform: translateY(0); }
+        .cookie-text { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
+        .cookie-text a { color: var(--blue-500); text-decoration: underline; }
+        .cookie-btns { display: flex; gap: 0.75rem; flex-shrink: 0; }
+        .btn-cookie-accept {
+            background: var(--blue-500); color: white; border: none;
+            padding: 0.55rem 1.25rem; border-radius: 8px; font-weight: 600;
+            cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .btn-cookie-accept:hover { background: var(--blue-700); }
+        .btn-cookie-decline {
+            background: transparent; color: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.2); padding: 0.55rem 1.25rem;
+            border-radius: 8px; font-size: 0.85rem; cursor: pointer;
+            font-family: 'Inter', sans-serif; transition: all 0.2s;
+        }
+        .btn-cookie-decline:hover { color: white; }
+
+        /* ======= RESPONSIVE ======= */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex; flex-direction: column;
+                position: fixed; top: 68px; left: 0; right: 0;
+                background: #111827; padding: 2rem; gap: 1.5rem; z-index: 999;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .mobile-menu-btn { display: block; }
+            .hero-content { grid-template-columns: 1fr; gap: 0; }
+            .hero-visual { display: none; }
+            .over-ons-inner,
+            .tijden-inner,
+            .contact-inner,
+            .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+            .values-grid { grid-template-columns: 1fr; }
+            .maps-wrap { min-height: 280px; }
+            .cookie-banner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .hero-stats { gap: 1.25rem; }
+            .wa-sticky { bottom: 1.5rem; right: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie melding">
+    <p class="cookie-text">
+        Wij gebruiken cookies om uw ervaring te verbeteren. Meer info in onze
+        <a href="#privacy">Privacyverklaring</a>.
+    </p>
+    <div class="cookie-btns">
+        <button class="btn-cookie-decline" id="cookieDecline">Weigeren</button>
+        <button class="btn-cookie-accept" id="cookieAccept">Accepteren</button>
+    </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="header-inner">
+        <a href="#" class="logo" aria-label="Borg Biz homepage">Borg <span>Biz</span></a>
+        <nav aria-label="Hoofdnavigatie">
+            <div class="nav-links" id="navLinks">
+                <a href="#diensten">Diensten</a>
+                <a href="#over-ons">Over Ons</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+                <a href="tel:+31657803273" class="btn-bel" aria-label="Bel ons direct">
+                    <i class="fas fa-phone" aria-hidden="true"></i> Bel Direct
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu openen" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero" aria-labelledby="hero-titel">
+    <div class="hero-content">
+        <div>
+            <div class="hero-badge">
+                <i class="fas fa-rocket" aria-hidden="true"></i> Startup uit Emmen
+            </div>
+            <h1 class="hero-title" id="hero-titel">
+                Uw digitale groei begint bij <span>Borg Biz</span>
+            </h1>
+            <p class="hero-subtitle">
+                Van professionele website tot volledig CRM-systeem — wij regelen
+                alles digitaal voor u. Snel, duidelijk en zonder gedoe.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    Start gratis gesprek
+                </a>
+                <a href="#diensten" class="btn-secondary">
+                    <i class="fas fa-compass" aria-hidden="true"></i>
+                    Bekijk diensten
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">Digitale diensten</div>
+                </div>
+                <div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Lokale focus</div>
+                </div>
+                <div>
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Vast aanspreekpunt</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+            <div class="hero-card">
+                <p class="hero-card-label">Wat wij voor u regelen</p>
+                <ul class="svc-list">
+                    <li><span class="svc-icon"><i class="fas fa-globe"></i></span> Website &amp; Landingspagina</li>
+                    <li><span class="svc-icon"><i class="fas fa-magnifying-glass"></i></span> SEO &amp; Google vindbaarheid</li>
+                    <li><span class="svc-icon"><i class="fas fa-bullhorn"></i></span> Marketing &amp; Advertenties</li>
+                    <li><span class="svc-icon"><i class="fas fa-users"></i></span> CRM Systeem</li>
+                    <li><span class="svc-icon"><i class="fas fa-robot"></i></span> AI Gesprek Analyseerder</li>
+                    <li><span class="svc-icon"><i class="fas fa-calculator"></i></span> Boekhouding &amp; Voorraad</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DIENSTEN ===== -->
+<section id="diensten" aria-labelledby="diensten-titel">
+    <div class="container">
+        <p class="section-label">Wat wij bieden</p>
+        <h2 class="section-title" id="diensten-titel">Alles wat uw bedrijf digitaal nodig heeft</h2>
+        <p class="section-subtitle">Van een eerste website tot een volledig geautomatiseerd systeem — wij bouwen het voor u.</p>
+        <div class="diensten-grid">
+            <div class="dienst-card">
+                <div class="dienst-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+                <h3 class="dienst-naam">Website &amp; Landingspagina</h3>
+                <p class="dienst-desc">Een professionele website die 24/7 voor u werkt en bezoekers omzet in klanten. Mobiel, snel en veilig.</p>
+                <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €499</span>
+            </div>
+            <div class="dienst-card">
+                <div class="dienst-icon"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></div>
+                <h3 class="dienst-naam">SEO &amp; Google Vindbaarheid</h3>
+                <p class="dienst-desc">Word gevonden door klanten in uw regio. Wij zorgen dat u bovenaan staat bij zoekopdrachten die er toe doen.</p>
+                <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €149/mnd</span>
+            </div>
+            <div class="dienst-card">
+                <div class="dienst-icon"><i class="fas fa-bullhorn" aria-hidden="true"></i></div>
+                <h3 class="dienst-naam">Marketing &amp; Advertenties</h3>
+                <p class="dienst-desc">Gerichte Google- en Meta-campagnes die echte klanten opleveren. Geen budget verspillen, wel resultaat.</p>
+                <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €199/mnd</span>
+            </div>
+            <div class="dienst-card">
+                <div class="dienst-icon"><i class="fas fa-crosshairs" aria-hidden="true"></i></div>
+                <h3 class="dienst-naam">Lead Scraper</h3>
+                <p class="dienst-desc">Automatisch potentiële klanten verzamelen in uw sector of regio. Altijd een verse lijst met contacten.</p>
+                <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Op aanvraag</span>
+            </div>
+            <div class="dienst-card">
+                <div class="dienst-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+                <h3 class="dienst-naam">AI Gesprek Analyseerder</h3>
+                <p class="dienst-desc">Laat AI uw klantgesprekken analyseren en verbeterpunten aanwijzen. Slimmer werken, betere service.</p>
+                <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Op aanvraag</span>
+            </div>
+            <div class="dienst-card">
+                <div class="dienst-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                <h3 class="dienst-naam">CRM Systeem</h3>
+                <p class="dienst-desc">Klantrelaties bijhouden, offertes versturen en follow-ups automatiseren — allemaal op één plek.</p>
+                <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €79/mnd</span>
+            </div>
+            <div class="dienst-card">
+                <div class="dienst-icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
+                <h3 class="dienst-naam">Boekhouding &amp; Voorraad</h3>
+                <p class="dienst-desc">Digitale boekhouding en voorraadbeheer, gekoppeld aan uw processen. Altijd inzicht, geen verrassingen.</p>
+                <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €99/mnd</span>
+            </div>
+            <div class="dienst-card">
+                <div class="dienst-icon"><i class="fas fa-ticket" aria-hidden="true"></i></div>
+                <h3 class="dienst-naam">Verhuur &amp; Evenementen</h3>
+                <p class="dienst-desc">Online reserveringen, verhuurplatform of ticketverkoop voor uw evenementen. Kant-en-klaar systeem.</p>
+                <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Op aanvraag</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== OVER ONS ===== -->
+<section id="over-ons" aria-labelledby="over-titel">
+    <div class="container">
+        <div class="over-ons-inner">
+            <div class="eigenaar-card">
+                <img class="eigenaar-avatar" src="images/robbin-maatman.jpg" alt="Robbin Maatman, oprichter van Borg Biz">
+                <p class="eigenaar-naam">Robbin Maatman</p>
+                <p class="eigenaar-titel">Oprichter van Borg Biz</p>
+                <div class="eigenaar-tags">
+                    <span class="tag">Emmen</span>
+                    <span class="tag">SaaS</span>
+                    <span class="tag">Lokaal</span>
+                    <span class="tag">Digitale groei</span>
+                </div>
+            </div>
+            <div class="over-ons-text">
+                <p class="section-label">Over ons</p>
+                <h2 id="over-titel">Hoi, ik ben Robbin — en ik geloof dat elk bedrijf digitaal kan groeien.</h2>
+                <p>Borg Biz is opgericht vanuit een simpele gedachte: lokale ondernemers verdienen dezelfde digitale tools als grote bedrijven, maar dan betaalbaar en zonder ingewikkelde verhalen.</p>
+                <p>Of u nu een taxibedrijf heeft, een barbershop runt of een chocoladefabriek leidt — wij zorgen dat uw digitale zaken op orde zijn. Van website tot CRM, van SEO tot ticketverkoop.</p>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
+                        <div>
+                            <p class="value-title">Eerlijk &amp; duidelijk</p>
+                            <p class="value-desc">Geen kleine lettertjes. Gewoon doen wat we zeggen.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+                        <div>
+                            <p class="value-title">Snel en lokaal</p>
+                            <p class="value-desc">Wij zijn in Emmen. U belt, wij komen.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                        <div>
+                            <p class="value-title">Veilig &amp; betrouwbaar</p>
+                            <p class="value-desc">Uw data is veilig bij ons. Altijd AVG-conform.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                        <div>
+                            <p class="value-title">Resultaatgericht</p>
+                            <p class="value-desc">Geen mooie praatjes — echte resultaten.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== OPENINGSTIJDEN & LOCATIE ===== -->
+<section id="openingstijden" aria-labelledby="tijden-titel">
+    <div class="container">
+        <p class="section-label">Wanneer &amp; waar</p>
+        <h2 class="section-title" id="tijden-titel">Openingstijden &amp; Locatie</h2>
+        <div class="tijden-inner">
+            <div class="tijden-tabel">
+                <h3><i class="fas fa-clock" aria-hidden="true"></i> Openingstijden</h3>
+                <div class="tijden-row"><span class="dag">Maandag</span><span class="tijd">09:00 – 17:00</span></div>
+                <div class="tijden-row"><span class="dag">Dinsdag</span><span class="tijd">09:00 – 17:00</span></div>
+                <div class="tijden-row"><span class="dag">Woensdag</span><span class="tijd">09:00 – 17:00</span></div>
+                <div class="tijden-row"><span class="dag">Donderdag</span><span class="tijd">09:00 – 17:00</span></div>
+                <div class="tijden-row"><span class="dag">Vrijdag</span><span class="tijd">09:00 – 16:00</span></div>
+                <div class="tijden-row"><span class="dag">Zaterdag</span><span class="tijd gesloten">Gesloten</span></div>
+                <div class="tijden-row"><span class="dag">Zondag</span><span class="tijd gesloten">Gesloten</span></div>
+                <p class="tijden-note"><i class="fas fa-info-circle" aria-hidden="true"></i> Buiten kantooruren bereikbaar via WhatsApp.</p>
+            </div>
+            <div class="maps-wrap">
+                <iframe
+                    src="https://maps.google.com/maps?q=Emmen,+Drenthe,+Nederland&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Locatie Borg Biz in Emmen"
+                    aria-label="Google Maps kaart van Emmen">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" aria-labelledby="reviews-titel">
+    <div class="container">
+        <p class="section-label">Wat klanten zeggen</p>
+        <h2 class="section-title" id="reviews-titel">Ervaringen van onze klanten</h2>
+        <p class="section-subtitle">Wij zijn net gestart — maar uw mening telt. Kom langs en oordeel zelf!</p>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars" aria-label="5 sterren">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="review-tekst">"Wij zijn nieuw, maar uw review kan hier straks staan! Kom langs en oordeel zelf."</p>
+                <div class="review-auteur">
+                    <div class="review-avatar" aria-hidden="true">A</div>
+                    <div>
+                        <p class="review-naam">Tevreden Klant</p>
+                        <p class="review-bron">Google Review</p>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars" aria-label="5 sterren">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="review-tekst">"Wij zijn nieuw, maar uw review kan hier straks staan! Kom langs en oordeel zelf."</p>
+                <div class="review-auteur">
+                    <div class="review-avatar" aria-hidden="true">B</div>
+                    <div>
+                        <p class="review-naam">Tevreden Klant</p>
+                        <p class="review-bron">Google Review</p>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars" aria-label="5 sterren">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="review-tekst">"Wij zijn nieuw, maar uw review kan hier straks staan! Kom langs en oordeel zelf."</p>
+                <div class="review-auteur">
+                    <div class="review-avatar" aria-hidden="true">C</div>
+                    <div>
+                        <p class="review-naam">Tevreden Klant</p>
+                        <p class="review-bron">Google Review</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reviews-cta">
+            <a href="https://search.google.com/local/writereview?placeid=JOUW_PLACE_ID" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                <i class="fab fa-google" aria-hidden="true"></i> Schrijf een review op Google
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" aria-labelledby="faq-titel">
+    <div class="container">
+        <p class="section-label">Veelgestelde vragen</p>
+        <h2 class="section-title" id="faq-titel">Heeft u een vraag?</h2>
+        <p class="section-subtitle">De meest gestelde vragen over onze diensten.</p>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-vraag" aria-expanded="false">
+                    Voor welke ondernemers werkt Borg Biz?
+                    <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-antwoord">
+                    <div class="faq-antwoord-inner">
+                        Borg Biz werkt voor elke lokale ondernemer die zijn digitale zaken op orde wil hebben. Van een taxibedrijf tot een barbershop, van een restaurant tot een verhuurder. Geen technische kennis nodig — wij regelen het voor u.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-vraag" aria-expanded="false">
+                    Wat kost een website via Borg Biz?
+                    <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-antwoord">
+                    <div class="faq-antwoord-inner">
+                        Een eenvoudige landingspagina begint vanaf €499 eenmalig. Een volledigere website met meerdere pagina's, contactformulier en SEO begint vanaf €899. Alles is bespreekbaar — stuur ons een berichtje en wij denken met u mee.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-vraag" aria-expanded="false">
+                    Hoe snel staat mijn website online?
+                    <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-antwoord">
+                    <div class="faq-antwoord-inner">
+                        Een standaard landingspagina staat binnen 5 tot 7 werkdagen live. Een grotere website duurt gemiddeld 2 tot 3 weken. Na het eerste gesprek sturen wij u een duidelijke planning.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-vraag" aria-expanded="false">
+                    Kan ik meerdere diensten combineren?
+                    <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-antwoord">
+                    <div class="faq-antwoord-inner">
+                        Ja, absoluut. Veel klanten beginnen met een website en voegen later SEO of een CRM toe. Wij bieden combinatiepakketten aan die voordeliger zijn dan losse diensten. Neem contact op voor een offerte op maat.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-vraag" aria-expanded="false">
+                    Is mijn data veilig bij Borg Biz?
+                    <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-antwoord">
+                    <div class="faq-antwoord-inner">
+                        Ja. Wij werken conform de AVG (GDPR) wetgeving. Uw klantdata wordt veilig opgeslagen en nooit gedeeld met derden. Wij gebruiken beveiligde HTTPS-verbindingen en versleutelde opslag voor alle systemen die wij bouwen.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" aria-labelledby="contact-titel">
+    <div class="container">
+        <div class="contact-inner">
+            <div class="contact-info">
+                <p class="section-label">Contact</p>
+                <h2 id="contact-titel">Klaar om te starten?</h2>
+                <p>Stuur ons een berichtje of bel direct. Wij reageren altijd binnen 1 werkdag.</p>
+                <div class="contact-items">
+                    <a href="tel:+31657803273" class="contact-item">
+                        <div class="contact-item-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
+                        <div>
+                            <p class="contact-item-label">Telefoon</p>
+                            <p class="contact-item-waarde">06 57 80 32 73</p>
+                        </div>
+                    </a>
+                    <a href="mailto:info.borgbiz@gmail.com" class="contact-item">
+                        <div class="contact-item-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+                        <div>
+                            <p class="contact-item-label">E-mail</p>
+                            <p class="contact-item-waarde">info.borgbiz@gmail.com</p>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/31657803273?text=Hallo+Borg+Biz%2C+ik+wil+graag+meer+informatie+over+uw+diensten." target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <div class="contact-item-icon" style="background:#25D366;"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
+                        <div>
+                            <p class="contact-item-label">WhatsApp</p>
+                            <p class="contact-item-waarde">Stuur een berichtje</p>
+                        </div>
+                    </a>
+                    <div class="contact-item" style="cursor:default;">
+                        <div class="contact-item-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></div>
+                        <div>
+                            <p class="contact-item-label">Locatie</p>
+                            <p class="contact-item-waarde">Emmen, Drenthe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Stuur ons een bericht</h3>
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="naam">Uw naam</label>
+                        <input type="text" id="naam" name="naam" placeholder="Jan de Vries" required autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mailadres</label>
+                        <input type="email" id="email" name="email" placeholder="jan@uwbedrijf.nl" required autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="dienst">Interesse in</label>
+                        <select id="dienst" name="dienst">
+                            <option value="">Kies een dienst...</option>
+                            <option value="website">Website / Landingspagina</option>
+                            <option value="seo">SEO &amp; Google Vindbaarheid</option>
+                            <option value="marketing">Marketing &amp; Advertenties</option>
+                            <option value="crm">CRM Systeem</option>
+                            <option value="boekhouding">Boekhouding &amp; Voorraad</option>
+                            <option value="overig">Anders / Overig</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bericht">Uw bericht</label>
+                        <textarea id="bericht" name="bericht" placeholder="Vertel ons kort wat u nodig heeft..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i> Verstuur bericht
+                    </button>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <i class="fas fa-circle-check" style="font-size:2rem;margin-bottom:.75rem;display:block;"></i>
+                    Bedankt! Wij nemen zo snel mogelijk contact met u op.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Privacy anchor (placeholder) -->
+<div id="privacy"></div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <p class="footer-logo">Borg <span>Biz</span></p>
+                <p class="footer-desc">Digitale groei voor lokale ondernemers in Emmen en omgeving. Van website tot CRM — alles op één plek geregeld.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Diensten</h4>
+                <ul>
+                    <li><a href="#diensten">Website &amp; Landingspagina</a></li>
+                    <li><a href="#diensten">SEO &amp; Vindbaarheid</a></li>
+                    <li><a href="#diensten">Marketing</a></li>
+                    <li><a href="#diensten">CRM Systeem</a></li>
+                    <li><a href="#diensten">Boekhouding</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Bedrijf</h4>
+                <ul>
+                    <li><a href="#over-ons">Over Ons</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#privacy">Privacyverklaring</a></li>
+                    <li><a href="#privacy">Cookiebeleid</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Borg Biz. Alle rechten voorbehouden.</p>
+            <p>Powered by <a href="https://borg.biz" rel="noopener noreferrer">Borg Biz</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== STICKY WHATSAPP ===== -->
+<div class="wa-sticky">
+    <span class="wa-tooltip" aria-hidden="true">App ons op WhatsApp</span>
+    <a href="https://wa.me/31657803273?text=Hallo+Borg+Biz%2C+ik+wil+graag+meer+informatie+over+uw+diensten."
+       class="wa-btn" target="_blank" rel="noopener noreferrer"
+       aria-label="Stuur ons een WhatsApp bericht">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+</div>
+
+<script>
+    // ---- Mobile menu ----
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileMenuBtn.addEventListener('click', function () {
+        const isOpen = navLinks.classList.toggle('open');
+        mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+        const icon = mobileMenuBtn.querySelector('i');
+        icon.className = isOpen ? 'fas fa-xmark' : 'fas fa-bars';
+    });
+
+    // Close mobile menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            navLinks.classList.remove('open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
+        });
+    });
+
+    // ---- Smooth scroll ----
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // ---- FAQ accordion ----
+    document.querySelectorAll('.faq-vraag').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const item = btn.closest('.faq-item');
+            const antwoord = item.querySelector('.faq-antwoord');
+            const isOpen = item.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(function (i) {
+                i.classList.remove('open');
+                i.querySelector('.faq-antwoord').style.maxHeight = '0';
+                i.querySelector('.faq-vraag').setAttribute('aria-expanded', 'false');
+            });
+
+            // Open clicked if it was closed
+            if (!isOpen) {
+                item.classList.add('open');
+                antwoord.style.maxHeight = antwoord.scrollHeight + 'px';
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    // ---- Cookie banner ----
+    const cookieBanner = document.getElementById('cookieBanner');
+
+    if (!localStorage.getItem('bbCookieConsent')) {
+        setTimeout(function () { cookieBanner.classList.add('show'); }, 1200);
+    }
+
+    document.getElementById('cookieAccept').addEventListener('click', function () {
+        localStorage.setItem('bbCookieConsent', 'accepted');
+        cookieBanner.classList.remove('show');
+    });
+
+    document.getElementById('cookieDecline').addEventListener('click', function () {
+        localStorage.setItem('bbCookieConsent', 'declined');
+        cookieBanner.classList.remove('show');
+    });
+
+    // ---- Contact form ----
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const naam  = document.getElementById('naam').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!naam) { document.getElementById('naam').focus(); return; }
+        if (!email || !emailRe.test(email)) { document.getElementById('email').focus(); return; }
+
+        // Hide form, show success message
+        contactForm.style.display = 'none';
+        formSuccess.style.display = 'block';
+    });
+</script>
+</body>
+</html>
