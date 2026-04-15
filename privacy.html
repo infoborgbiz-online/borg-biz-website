@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <title>Privacyverklaring & Cookiebeleid — Borg Biz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #111827;
+            background: #F9FAFB;
+            line-height: 1.7;
+        }
+        header {
+            background: #111827;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+        .logo span { color: #3B82F6; }
+        .back-btn {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+        .back-btn:hover { color: white; }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 2rem 4rem;
+        }
+        .page-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .last-updated {
+            font-size: 0.85rem;
+            color: #6B7280;
+            margin-bottom: 3rem;
+        }
+        .section-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #E5E7EB;
+        }
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: #3B82F6;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        p { color: #4B5563; margin-bottom: 0.75rem; font-size: 0.95rem; }
+        p:last-child { margin-bottom: 0; }
+        ul { color: #4B5563; font-size: 0.95rem; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+        ul li { margin-bottom: 0.4rem; }
+        a { color: #3B82F6; }
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .tab {
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: 1px solid #E5E7EB;
+            background: white;
+            color: #4B5563;
+            transition: all 0.2s;
+        }
+        .tab.active {
+            background: #1E3A8A;
+            color: white;
+            border-color: #1E3A8A;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #9CA3AF;
+            font-size: 0.85rem;
+            border-top: 1px solid #E5E7EB;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Borg <span>Biz</span></a>
+        <a href="index.html" class="back-btn">&#8592; Terug naar website</a>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Privacy & Cookies</h1>
+        <p class="last-updated">Laatst bijgewerkt: 15 april 2026</p>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('privacy')">Privacyverklaring</button>
+            <button class="tab" onclick="showTab('cookies')">Cookiebeleid</button>
+        </div>
+
+        <!-- PRIVACYVERKLARING -->
+        <div class="tab-content active" id="privacy">
+
+            <div class="section-card">
+                <h2>Wie zijn wij?</h2>
+                <p>Borg Biz is een eenmanszaak gevestigd in Emmen, ingeschreven bij de Kamer van Koophandel.</p>
+                <p><strong>Bedrijfsnaam:</strong> Borg Biz<br>
+                <strong>Locatie:</strong> Emmen, Drenthe<br>
+                <strong>E-mail:</strong> <a href="mailto:info.borgbiz@gmail.com">info.borgbiz@gmail.com</a><br>
+                <strong>Telefoon:</strong> 06 57 80 32 73</p>
+            </div>
+
+            <div class="section-card">
+                <h2>Welke gegevens verzamelen wij?</h2>
+                <p>Wij verzamelen alleen gegevens die u zelf aan ons verstrekt, namelijk via het contactformulier op onze website:</p>
+                <ul>
+                    <li>Naam</li>
+                    <li>E-mailadres</li>
+                    <li>Uw bericht en interesse</li>
+                </ul>
+                <p>Wij verzamelen geen gevoelige persoonsgegevens.</p>
+            </div>
+
+            <div class="section-card">
+                <h2>Waarom verzamelen wij deze gegevens?</h2>
+                <p>Wij gebruiken uw gegevens uitsluitend om:</p>
+                <ul>
+                    <li>Uw vraag of aanvraag te beantwoorden</li>
+                    <li>Contact met u op te nemen over onze diensten</li>
+                </ul>
+                <p>Wij verkopen of delen uw gegevens nooit met derden voor commerciële doeleinden.</p>
+            </div>
+
+            <div class="section-card">
+                <h2>Hoe lang bewaren wij uw gegevens?</h2>
+                <p>Wij bewaren uw gegevens niet langer dan noodzakelijk. Contactverzoeken worden maximaal 12 maanden bewaard, tenzij er een zakelijke relatie ontstaat.</p>
+            </div>
+
+            <div class="section-card">
+                <h2>Uw rechten (AVG)</h2>
+                <p>Op basis van de Algemene Verordening Gegevensbescherming (AVG) heeft u de volgende rechten:</p>
+                <ul>
+                    <li><strong>Inzage</strong> — u kunt opvragen welke gegevens wij van u hebben</li>
+                    <li><strong>Correctie</strong> — u kunt onjuiste gegevens laten aanpassen</li>
+                    <li><strong>Verwijdering</strong> — u kunt verzoeken uw gegevens te wissen</li>
+                    <li><strong>Bezwaar</strong> — u kunt bezwaar maken tegen verwerking</li>
+                </ul>
+                <p>Voor verzoeken kunt u mailen naar <a href="mailto:info.borgbiz@gmail.com">info.borgbiz@gmail.com</a>. Wij reageren binnen 30 dagen.</p>
+            </div>
+
+            <div class="section-card">
+                <h2>Beveiliging</h2>
+                <p>Onze website maakt gebruik van een beveiligde HTTPS-verbinding. Uw gegevens worden nooit onbeveiligd verstuurd.</p>
+            </div>
+
+            <div class="section-card">
+                <h2>Klachten</h2>
+                <p>Heeft u een klacht over hoe wij met uw gegevens omgaan? U kunt een klacht indienen bij de Autoriteit Persoonsgegevens via <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener noreferrer">autoriteitpersoonsgegevens.nl</a>.</p>
+            </div>
+
+        </div>
+
+        <!-- COOKIEBELEID -->
+        <div class="tab-content" id="cookies">
+
+            <div class="section-card">
+                <h2>Wat zijn cookies?</h2>
+                <p>Cookies zijn kleine tekstbestanden die op uw apparaat worden opgeslagen wanneer u onze website bezoekt. Ze helpen ons de website goed te laten werken en uw ervaring te verbeteren.</p>
+            </div>
+
+            <div class="section-card">
+                <h2>Welke cookies gebruiken wij?</h2>
+                <p><strong>Noodzakelijke cookies</strong> (altijd actief)</p>
+                <ul>
+                    <li><code>bbCookieConsent</code> — onthoudt uw cookievoorkeur. Bewaard in uw browser (localStorage), nooit verstuurd naar externe servers.</li>
+                </ul>
+                <p style="margin-top:1rem;"><strong>Analytische cookies</strong> (alleen met toestemming)</p>
+                <ul>
+                    <li>Wij gebruiken op dit moment geen analytische cookies.</li>
+                </ul>
+                <p style="margin-top:1rem;"><strong>Marketing cookies</strong></p>
+                <ul>
+                    <li>Wij plaatsen geen marketing- of trackingcookies.</li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+                <h2>Cookies van derden</h2>
+                <p>Onze website toont een Google Maps kaart. Google kan hierbij cookies plaatsen. Meer informatie vindt u in het <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">privacybeleid van Google</a>.</p>
+            </div>
+
+            <div class="section-card">
+                <h2>Cookies beheren of verwijderen</h2>
+                <p>U kunt cookies te allen tijde verwijderen via de instellingen van uw browser. Hieronder vindt u links naar de instructies van veelgebruikte browsers:</p>
+                <ul>
+                    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+                    <li><a href="https://support.mozilla.org/nl/kb/cookies-verwijderen-gegevens-websites-verwijderd" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+                    <li><a href="https://support.microsoft.com/nl-nl/microsoft-edge/cookies-verwijderen-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+                    <li><a href="https://support.apple.com/nl-nl/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari</a></li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+                <h2>Cookietoestemming intrekken</h2>
+                <p>U kunt uw toestemming altijd intrekken door op de knop hieronder te klikken. De cookiebanner verschijnt dan opnieuw bij uw volgende bezoek.</p>
+                <button onclick="localStorage.removeItem('bbCookieConsent'); alert('Uw cookietoestemming is ingetrokken. Ververs de hoofdpagina om de banner opnieuw te zien.');"
+                    style="margin-top:1rem; background:#1E3A8A; color:white; border:none; padding:0.7rem 1.5rem; border-radius:8px; font-family:Inter,sans-serif; font-weight:600; cursor:pointer; font-size:0.9rem;">
+                    Toestemming intrekken
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Borg Biz. Alle rechten voorbehouden. <a href="index.html">Terug naar website</a>
+    </footer>
+
+    <script>
+        function showTab(name) {
+            document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+            document.querySelectorAll('.tab').forEach(function(el) { el.classList.remove('active'); });
+            document.getElementById(name).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
