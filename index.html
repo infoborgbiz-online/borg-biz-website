@@ -219,14 +219,14 @@
         .dienst-card:hover::before { opacity: 1; }
         .dienst-card:target {
             border-color: var(--blue-500);
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.2), 0 20px 40px rgba(0,0,0,0.08);
-            animation: highlight-pulse 1.5s ease;
+            animation: highlight-kaart 2s ease forwards;
         }
         .dienst-card:target::before { opacity: 1; }
-        @keyframes highlight-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(59,130,246,0.5); }
-            50% { box-shadow: 0 0 0 10px rgba(59,130,246,0); }
-            100% { box-shadow: 0 0 0 3px rgba(59,130,246,0.2), 0 20px 40px rgba(0,0,0,0.08); }
+        @keyframes highlight-kaart {
+            0%   { background: white; transform: scale(1); box-shadow: none; }
+            15%  { background: #DBEAFE; transform: scale(1.04); box-shadow: 0 0 0 4px rgba(59,130,246,0.4), 0 24px 48px rgba(59,130,246,0.2); }
+            40%  { background: #EFF6FF; transform: scale(1.02); box-shadow: 0 0 0 3px rgba(59,130,246,0.3), 0 20px 40px rgba(59,130,246,0.15); }
+            100% { background: white; transform: scale(1); box-shadow: 0 0 0 2px rgba(59,130,246,0.15), 0 12px 24px rgba(0,0,0,0.06); }
         }
         .dienst-icon {
             width: 48px; height: 48px; background: var(--blue-100);
