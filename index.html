@@ -203,6 +203,8 @@
             background: white; border-radius: 16px; padding: 2rem;
             border: 1px solid #E5E7EB; transition: all 0.3s;
             position: relative; overflow: hidden;
+            scroll-margin-top: 90px;
+            display: flex; flex-direction: column;
         }
         .dienst-card::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -215,6 +217,17 @@
             border-color: var(--blue-100);
         }
         .dienst-card:hover::before { opacity: 1; }
+        .dienst-card:target {
+            border-color: var(--blue-500);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2), 0 20px 40px rgba(0,0,0,0.08);
+            animation: highlight-pulse 1.5s ease;
+        }
+        .dienst-card:target::before { opacity: 1; }
+        @keyframes highlight-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(59,130,246,0.5); }
+            50% { box-shadow: 0 0 0 10px rgba(59,130,246,0); }
+            100% { box-shadow: 0 0 0 3px rgba(59,130,246,0.2), 0 20px 40px rgba(0,0,0,0.08); }
+        }
         .dienst-icon {
             width: 48px; height: 48px; background: var(--blue-100);
             border-radius: 12px; display: flex; align-items: center;
@@ -222,13 +235,23 @@
             font-size: 1.2rem; margin-bottom: 1.25rem;
         }
         .dienst-naam { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
-        .dienst-desc { font-size: 0.88rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 1rem; }
+        .dienst-desc { font-size: 0.88rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 1rem; flex: 1; }
         .dienst-prijs {
             display: inline-flex; align-items: center; gap: 0.3rem;
             background: var(--blue-100); color: var(--blue-700);
             font-size: 0.78rem; font-weight: 600;
             padding: 0.25rem 0.75rem; border-radius: 100px;
+            margin-bottom: 1rem;
         }
+        .dienst-cta {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: var(--blue-500); color: white;
+            font-size: 0.82rem; font-weight: 600;
+            padding: 0.5rem 1rem; border-radius: 8px;
+            text-decoration: none; transition: background 0.2s;
+            align-self: flex-start;
+        }
+        .dienst-cta:hover { background: var(--blue-700); }
 
         /* ======= OVER ONS ======= */
         #over-ons { background: white; }
@@ -601,72 +624,84 @@
                 <h3 class="dienst-naam">Website &amp; Landingspagina</h3>
                 <p class="dienst-desc">Een professionele website die 24/7 voor u werkt en bezoekers omzet in klanten. Mobiel, snel en veilig.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €499</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
             <div class="dienst-card" id="dienst-seo">
                 <div class="dienst-icon"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">SEO &amp; Google Vindbaarheid</h3>
                 <p class="dienst-desc">Word gevonden door klanten in uw regio. Wij zorgen dat u bovenaan staat bij zoekopdrachten die er toe doen.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €149/mnd</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
             <div class="dienst-card" id="dienst-marketing">
                 <div class="dienst-icon"><i class="fas fa-bullhorn" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">Marketing &amp; Advertenties</h3>
                 <p class="dienst-desc">Gerichte Google- en Meta-campagnes die echte klanten opleveren. Geen budget verspillen, wel resultaat.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €199/mnd</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
-            <div class="dienst-card">
+            <div class="dienst-card" id="dienst-leadscraper">
                 <div class="dienst-icon"><i class="fas fa-crosshairs" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">Lead Scraper</h3>
                 <p class="dienst-desc">Automatisch potentiële klanten verzamelen in uw sector of regio. Altijd een verse lijst met contacten.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Op aanvraag</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
-            <div class="dienst-card">
+            <div class="dienst-card" id="dienst-ai">
                 <div class="dienst-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">AI Gesprek Analyseerder</h3>
                 <p class="dienst-desc">Laat AI uw klantgesprekken analyseren en verbeterpunten aanwijzen. Slimmer werken, betere service.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Op aanvraag</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
             <div class="dienst-card" id="dienst-crm">
                 <div class="dienst-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">CRM Systeem</h3>
                 <p class="dienst-desc">Klantrelaties bijhouden, offertes versturen en follow-ups automatiseren. Allemaal op één plek.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €79/mnd</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
             <div class="dienst-card" id="dienst-boekhouding">
                 <div class="dienst-icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">Boekhouding &amp; Voorraad</h3>
                 <p class="dienst-desc">Digitale boekhouding en voorraadbeheer, gekoppeld aan uw processen. Altijd inzicht, geen verrassingen.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €99/mnd</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
-            <div class="dienst-card">
+            <div class="dienst-card" id="dienst-verhuur">
                 <div class="dienst-icon"><i class="fas fa-ticket" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">Verhuur &amp; Evenementen</h3>
                 <p class="dienst-desc">Online reserveringen, verhuurplatform of ticketverkoop voor uw evenementen. Kant-en-klaar systeem.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Op aanvraag</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
-            <div class="dienst-card">
+            <div class="dienst-card" id="dienst-blog">
                 <div class="dienst-icon"><i class="fas fa-pen-nib" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">Blog &amp; Content</h3>
                 <p class="dienst-desc">Regelmatige blogartikelen geschreven voor uw branche. Betere vindbaarheid op Google en meer vertrouwen bij bezoekers.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €99/mnd</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
-            <div class="dienst-card">
+            <div class="dienst-card" id="dienst-hosting">
                 <div class="dienst-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">Hosting &amp; Beheer</h3>
                 <p class="dienst-desc">Snelle en betrouwbare hosting inclusief updates, beveiliging en technisch onderhoud. Uw website altijd online.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Vanaf €35/mnd</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
-            <div class="dienst-card">
+            <div class="dienst-card" id="dienst-whatsapp">
                 <div class="dienst-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">WhatsApp Automatisering</h3>
                 <p class="dienst-desc">Automatische berichtflows, snelle antwoorden en klantopvolging via WhatsApp. Nooit meer een lead missen.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Op aanvraag</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
-            <div class="dienst-card">
+            <div class="dienst-card" id="dienst-webshop">
                 <div class="dienst-icon"><i class="fas fa-cart-shopping" aria-hidden="true"></i></div>
                 <h3 class="dienst-naam">Webshop</h3>
                 <p class="dienst-desc">Een professionele webshop om producten of diensten online te verkopen. Eenvoudig te beheren, direct klaar voor gebruik.</p>
                 <span class="dienst-prijs"><i class="fas fa-tag" aria-hidden="true"></i> Op aanvraag</span>
+                <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
         </div>
     </div>
@@ -977,6 +1012,13 @@
                     <li><a href="#dienst-marketing">Marketing</a></li>
                     <li><a href="#dienst-crm">CRM Systeem</a></li>
                     <li><a href="#dienst-boekhouding">Boekhouding</a></li>
+                    <li><a href="#dienst-hosting">Hosting &amp; Beheer</a></li>
+                    <li><a href="#dienst-whatsapp">WhatsApp Automatisering</a></li>
+                    <li><a href="#dienst-blog">Blog &amp; Content</a></li>
+                    <li><a href="#dienst-webshop">Webshop</a></li>
+                    <li><a href="#dienst-leadscraper">Lead Scraper</a></li>
+                    <li><a href="#dienst-ai">AI Gesprek Analyseerder</a></li>
+                    <li><a href="#dienst-verhuur">Verhuur &amp; Evenementen</a></li>
                 </ul>
             </div>
             <div class="footer-col">
