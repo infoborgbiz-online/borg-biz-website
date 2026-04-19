@@ -217,15 +217,23 @@
             border-color: var(--blue-100);
         }
         .dienst-card:hover::before { opacity: 1; }
-        .dienst-card:target {
+        .dienst-card.highlighted {
             border-color: var(--blue-500);
-            animation: highlight-kaart 2s ease forwards;
+            animation: highlight-kaart 2.5s ease forwards;
         }
-        .dienst-card:target::before { opacity: 1; }
+        .dienst-card.highlighted::before { opacity: 1; }
+        .diensten-grid.has-highlight .dienst-card:not(.highlighted) {
+            opacity: 0.35;
+            filter: blur(1px);
+            transition: opacity 0.4s, filter 0.4s;
+        }
+        .diensten-grid .dienst-card {
+            transition: opacity 0.4s, filter 0.4s, transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
         @keyframes highlight-kaart {
             0%   { background: white; transform: scale(1); box-shadow: none; }
-            15%  { background: #DBEAFE; transform: scale(1.04); box-shadow: 0 0 0 4px rgba(59,130,246,0.4), 0 24px 48px rgba(59,130,246,0.2); }
-            40%  { background: #EFF6FF; transform: scale(1.02); box-shadow: 0 0 0 3px rgba(59,130,246,0.3), 0 20px 40px rgba(59,130,246,0.15); }
+            15%  { background: #DBEAFE; transform: scale(1.05); box-shadow: 0 0 0 5px rgba(59,130,246,0.5), 0 28px 56px rgba(59,130,246,0.25); }
+            45%  { background: #EFF6FF; transform: scale(1.03); box-shadow: 0 0 0 3px rgba(59,130,246,0.3), 0 20px 40px rgba(59,130,246,0.15); }
             100% { background: white; transform: scale(1); box-shadow: 0 0 0 2px rgba(59,130,246,0.15), 0 12px 24px rgba(0,0,0,0.06); }
         }
         .dienst-icon {
@@ -1120,6 +1128,42 @@
     document.getElementById('cookieDecline').addEventListener('click', function () {
         localStorage.setItem('bbCookieConsent', 'declined');
         cookieBanner.classList.remove('show');
+    });
+
+    // ---- Dienst highlight na scroll ----
+    function triggerHighlight(targetId) {
+        const target = document.getElementById(targetId);
+        const grid = document.querySelector('.diensten-grid');
+        if (!target || !grid) return;
+
+        document.querySelectorAll('.dienst-card').forEach(c => c.classList.remove('highlighted'));
+        grid.classList.remove('has-highlight');
+
+        let scrollDone = false;
+        let lastPos = window.scrollY;
+
+        const checkScrollDone = setInterval(function() {
+            if (window.scrollY === lastPos && !scrollDone) {
+                scrollDone = true;
+                clearInterval(checkScrollDone);
+                target.classList.add('highlighted');
+                grid.classList.add('has-highlight');
+                setTimeout(function() {
+                    target.classList.remove('highlighted');
+                    grid.classList.remove('has-highlight');
+                }, 2800);
+            }
+            lastPos = window.scrollY;
+        }, 80);
+
+        setTimeout(function() { clearInterval(checkScrollDone); }, 3000);
+    }
+
+    document.querySelectorAll('a[href^="#dienst-"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            const id = this.getAttribute('href').slice(1);
+            setTimeout(function() { triggerHighlight(id); }, 100);
+        });
     });
 
     // ---- Contact form ----
