@@ -973,6 +973,10 @@
                         <input type="email" id="email" name="email" placeholder="jan@uwbedrijf.nl" required autocomplete="email">
                     </div>
                     <div class="form-group">
+                        <label for="telefoon">Telefoonnummer</label>
+                        <input type="tel" id="telefoon" name="telefoon" placeholder="06-12345678" autocomplete="tel">
+                    </div>
+                    <div class="form-group">
                         <label for="dienst">Interesse in</label>
                         <select id="dienst" name="dienst">
                             <option value="">Kies een dienst...</option>
@@ -1179,10 +1183,11 @@
 
     contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
-        const naam    = document.getElementById('naam').value.trim();
-        const email   = document.getElementById('email').value.trim();
-        const dienst  = document.getElementById('dienst').value;
-        const bericht = document.getElementById('bericht').value.trim();
+        const naam     = document.getElementById('naam').value.trim();
+        const email    = document.getElementById('email').value.trim();
+        const telefoon = document.getElementById('telefoon').value.trim();
+        const dienst   = document.getElementById('dienst').value;
+        const bericht  = document.getElementById('bericht').value.trim();
         const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const submitBtn = contactForm.querySelector('.btn-submit');
 
@@ -1197,7 +1202,7 @@
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ naam, email, dienst, bericht })
+                body: JSON.stringify({ naam, email, telefoon, dienst, bericht })
             });
 
             const data = await response.json();
