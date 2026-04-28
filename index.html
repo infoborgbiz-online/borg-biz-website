@@ -422,6 +422,71 @@
             border: 1px solid #BBF7D0; font-weight: 600;
         }
 
+        /* ======= PRICING ======= */
+        #pricing { background: var(--dark); }
+        #pricing .section-label { color: #60A5FA; }
+        #pricing .section-title { color: white; }
+        #pricing .section-subtitle { color: rgba(255,255,255,0.6); max-width: 580px; }
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem; margin-top: 3rem; align-items: start;
+        }
+        .pricing-card {
+            background: var(--gray-800); border-radius: 20px; padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex; flex-direction: column; transition: transform 0.2s;
+        }
+        .pricing-card:hover { transform: translateY(-4px); }
+        .pricing-card.pricing-popular {
+            background: var(--blue-700); border-color: var(--blue-500);
+            transform: scale(1.04);
+        }
+        .pricing-card.pricing-popular:hover { transform: scale(1.04) translateY(-4px); }
+        .pricing-badge {
+            background: white; color: var(--blue-700);
+            font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.06em; padding: 0.3rem 0.85rem;
+            border-radius: 100px; display: inline-block;
+            margin-bottom: 1.25rem; align-self: flex-start;
+        }
+        .pricing-naam { font-size: 1.2rem; font-weight: 800; color: white; margin-bottom: 0.25rem; }
+        .pricing-voor { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; }
+        .pricing-prijs { margin-bottom: 0.35rem; display: flex; align-items: baseline; gap: 0.3rem; }
+        .pricing-bedrag { font-size: 2.8rem; font-weight: 900; color: white; line-height: 1; }
+        .pricing-eenheid { font-size: 0.9rem; color: rgba(255,255,255,0.55); }
+        .pricing-mnd { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 1.75rem; }
+        .pricing-popular .pricing-mnd { color: rgba(255,255,255,0.65); }
+        .pricing-features { list-style: none; margin-bottom: 2rem; flex: 1; }
+        .pricing-features li {
+            display: flex; align-items: center; gap: 0.65rem;
+            font-size: 0.88rem; color: rgba(255,255,255,0.85);
+            padding: 0.45rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .pricing-features li:last-child { border-bottom: none; }
+        .pricing-features li i { font-size: 0.8rem; flex-shrink: 0; }
+        .pricing-features li i.fa-check { color: #4ADE80; }
+        .pricing-features li.pricing-nee { color: rgba(255,255,255,0.3); }
+        .pricing-features li.pricing-nee i { color: rgba(255,255,255,0.2); }
+        .pricing-cta {
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.1); color: white;
+            padding: 0.85rem; border-radius: 10px; text-decoration: none;
+            font-weight: 700; font-size: 0.95rem;
+            border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s;
+        }
+        .pricing-cta:hover { background: rgba(255,255,255,0.18); }
+        .pricing-cta-popular { background: white; color: var(--blue-700); border-color: white; }
+        .pricing-cta-popular:hover { background: var(--blue-100); color: var(--blue-900); }
+        .pricing-note {
+            text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4);
+            margin-top: 2rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.pricing-popular { transform: scale(1); }
+            .pricing-card.pricing-popular:hover { transform: translateY(-4px); }
+        }
+
         /* ======= FOOTER ======= */
         footer { background: var(--dark); color: white; padding: 3.5rem 2rem 2rem; }
         .footer-inner { max-width: 1200px; margin: 0 auto; }
@@ -551,6 +616,7 @@
         <nav aria-label="Hoofdnavigatie">
             <div class="nav-links" id="navLinks">
                 <a href="#diensten">Diensten</a>
+                <a href="#pricing">Pakketten</a>
                 <a href="#over-ons">Over Ons</a>
                 <a href="#faq">FAQ</a>
                 <a href="#contact">Contact</a>
@@ -712,6 +778,98 @@
                 <a href="#contact" class="dienst-cta"><i class="fas fa-paper-plane"></i> Aanvragen</a>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing" aria-labelledby="pricing-titel">
+    <div class="container">
+        <p class="section-label">Pakketten</p>
+        <h2 class="section-title" id="pricing-titel">Kies het pakket dat bij u past</h2>
+        <p class="section-subtitle">Geen verborgen kosten. Geen lang contract. Alles digitaal geregeld voor een vast maandbedrag.</p>
+        <div class="pricing-grid">
+
+            <div class="pricing-card">
+                <p class="pricing-naam">Starter</p>
+                <p class="pricing-voor">Voor starters &amp; ZZP'ers</p>
+                <div class="pricing-prijs">
+                    <span class="pricing-bedrag">€69</span>
+                    <span class="pricing-eenheid">/mnd</span>
+                </div>
+                <p class="pricing-mnd">Min. 12 mnd - daarna maandelijks opzegbaar</p>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Professionele landingspagina</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Hosting &amp; SSL inbegrepen</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Contactformulier</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> WhatsApp-knop</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Google Mijn Bedrijf koppeling</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Mobiel geoptimaliseerd</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> 1x aanpassing per maand</li>
+                    <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> SEO &amp; rapportage</li>
+                    <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> CRM systeem</li>
+                    <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> Marketing campagnes</li>
+                </ul>
+                <a href="#contact" class="pricing-cta" onclick="kiesPakket('pakket-starter'); return false;">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Start nu
+                </a>
+            </div>
+
+            <div class="pricing-card pricing-popular">
+                <span class="pricing-badge">Meest gekozen</span>
+                <p class="pricing-naam">Groei</p>
+                <p class="pricing-voor">Voor groeiende bedrijven</p>
+                <div class="pricing-prijs">
+                    <span class="pricing-bedrag">€129</span>
+                    <span class="pricing-eenheid">/mnd</span>
+                </div>
+                <p class="pricing-mnd">Min. 12 mnd - daarna maandelijks opzegbaar</p>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Website met meerdere pagina's</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Hosting &amp; SSL inbegrepen</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Contactformulier + WhatsApp</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Google Mijn Bedrijf optimalisatie</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> SEO (10 zoekwoorden)</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Maandelijkse SEO rapportage</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Blog &amp; content setup</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> 3x aanpassingen per maand</li>
+                    <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> CRM systeem</li>
+                    <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> Marketing campagnes</li>
+                </ul>
+                <a href="#contact" class="pricing-cta pricing-cta-popular" onclick="kiesPakket('pakket-groei'); return false;">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Start nu
+                </a>
+            </div>
+
+            <div class="pricing-card">
+                <p class="pricing-naam">Pro</p>
+                <p class="pricing-voor">Volledig ontzorgd</p>
+                <div class="pricing-prijs">
+                    <span class="pricing-bedrag">€229</span>
+                    <span class="pricing-eenheid">/mnd</span>
+                </div>
+                <p class="pricing-mnd">Min. 12 mnd - daarna maandelijks opzegbaar</p>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Maatwerk website (onbeperkt)</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Hosting &amp; SSL inbegrepen</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> SEO (20 zoekwoorden + rapportage)</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> CRM systeem (Odoo)</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Google + Meta advertenties</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> WhatsApp automatisering</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> AI Gesprek Analyseerder</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Maandelijks strategiegesprek</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Priority support</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Onbeperkte aanpassingen</li>
+                </ul>
+                <a href="#contact" class="pricing-cta" onclick="kiesPakket('pakket-pro'); return false;">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Start nu
+                </a>
+            </div>
+
+        </div>
+        <p class="pricing-note">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+            Alle pakketten excl. BTW. Liever eenmalig betalen? Vraag naar onze offertes op maat.
+        </p>
     </div>
 </section>
 
@@ -980,6 +1138,9 @@
                         <label for="dienst">Interesse in</label>
                         <select id="dienst" name="dienst">
                             <option value="">Kies een dienst...</option>
+                            <option value="pakket-starter">Starter Pakket (€69/mnd)</option>
+                            <option value="pakket-groei">Groei Pakket (€129/mnd)</option>
+                            <option value="pakket-pro">Pro Pakket (€229/mnd)</option>
                             <option value="website">Website / Landingspagina</option>
                             <option value="seo">SEO &amp; Google Vindbaarheid</option>
                             <option value="marketing">Marketing &amp; Advertenties</option>
@@ -1091,7 +1252,7 @@
     });
 
     // ---- Smooth scroll ----
-    document.querySelectorAll('a[href^="#"]:not(.dienst-cta)').forEach(function (anchor) {
+    document.querySelectorAll('a[href^="#"]:not(.dienst-cta):not(.pricing-cta)').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -1176,6 +1337,11 @@
             setTimeout(function() { triggerHighlight(id); }, 100);
         });
     });
+
+    function kiesPakket(waarde) {
+        document.getElementById('dienst').value = waarde;
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
     document.querySelector('.diensten-grid').addEventListener('click', function(e) {
         var cta = e.target.closest('.dienst-cta');
