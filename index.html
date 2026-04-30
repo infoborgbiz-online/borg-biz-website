@@ -272,13 +272,21 @@
             border-radius: 20px; padding: 2.5rem;
             text-align: center; color: white;
         }
-        .eigenaar-avatar {
+        .eigenaar-avatar-wrap {
             width: 140px; height: 140px;
-            border-radius: 50%; display: block;
+            border-radius: 50%;
+            overflow: hidden;
             margin: 0 auto 1.5rem;
             border: 4px solid rgba(255,255,255,0.35);
-            object-fit: cover; object-position: top;
-            background: rgba(255,255,255,0.14);
+            flex-shrink: 0;
+        }
+        .eigenaar-avatar {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center 18%;
+            transform: scale(1.5);
+            transform-origin: center 18%;
+            display: block;
         }
         .eigenaar-naam { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem; }
         .eigenaar-titel { font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-bottom: 1rem; }
@@ -878,7 +886,7 @@
     <div class="container">
         <div class="over-ons-inner">
             <div class="eigenaar-card">
-                <img class="eigenaar-avatar" src="images/robbin-maatman-2.webp" alt="Robbin Maatman, oprichter van Borg Biz">
+                <div class="eigenaar-avatar-wrap"><img class="eigenaar-avatar" src="images/robbin-maatman-2.webp" alt="Robbin Maatman, oprichter van Borg Biz"></div>
                 <p class="eigenaar-naam">Robbin Maatman</p>
                 <p class="eigenaar-titel">Oprichter van Borg Biz</p>
                 <div class="eigenaar-tags">
