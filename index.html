@@ -53,8 +53,11 @@
             display: flex; align-items: center; justify-content: space-between;
         }
         .logo {
-            font-size: 1.5rem; font-weight: 800; color: white;
-            text-decoration: none; letter-spacing: -0.5px;
+            display: flex; align-items: center;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 44px; width: auto;
         }
         .logo span { color: var(--blue-500); }
         .nav-links {
@@ -649,7 +652,9 @@
 <!-- ===== HEADER ===== -->
 <header>
     <div class="header-inner">
-        <a href="#" class="logo" aria-label="Borg Biz homepage">Borg <span>Biz</span></a>
+        <a href="#" class="logo" aria-label="Borg Biz homepage">
+            <img src="images/logo-full.svg" alt="Borg Biz" width="210" height="44">
+        </a>
         <nav aria-label="Hoofdnavigatie">
             <div class="nav-links" id="navLinks">
                 <a href="#diensten">Diensten</a>
