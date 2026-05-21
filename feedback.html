@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jouw ervaring met Borg Biz</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F1F5F9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .kaart {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 2.5rem 2rem;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #3B82F6;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: #1E3A8A; }
+
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub {
+            font-size: 0.9rem;
+            color: #64748B;
+            margin-bottom: 2rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #DBEAFE;
+            color: #1D4ED8;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            margin-bottom: 1.75rem;
+        }
+
+        .knoppen {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .knop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.1rem 1.4rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 14px;
+            cursor: pointer;
+            background: white;
+            transition: all 0.18s;
+            min-width: 110px;
+            font-family: inherit;
+        }
+
+        .knop:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+
+        .knop.tevreden:hover  { border-color: #22C55E; background: #F0FDF4; }
+        .knop.neutraal:hover  { border-color: #F59E0B; background: #FFFBEB; }
+        .knop.ontevreden:hover { border-color: #EF4444; background: #FEF2F2; }
+
+        .knop .emoji { font-size: 2rem; }
+        .knop .label { font-size: 0.82rem; font-weight: 600; color: #475569; }
+
+        /* Feedbackformulier */
+        .feedback-form { display: none; text-align: left; margin-top: 1.75rem; border-top: 1px solid #E2E8F0; padding-top: 1.75rem; }
+
+        .feedback-form label { display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.5rem; }
+
+        .feedback-form textarea {
+            width: 100%;
+            border: 1.5px solid #CBD5E1;
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: #1E293B;
+            resize: vertical;
+            min-height: 110px;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .feedback-form textarea:focus { border-color: #3B82F6; }
+
+        .btn-verzend {
+            width: 100%;
+            background: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.85rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.15s;
+        }
+
+        .btn-verzend:hover { background: #2563EB; }
+        .btn-verzend:disabled { background: #93C5FD; cursor: not-allowed; }
+
+        /* Bedankt schermen */
+        .bedankt { display: none; margin-top: 1.75rem; border-top: 1px solid #E2E8F0; padding-top: 1.75rem; }
+        .bedankt .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .bedankt h2 { font-size: 1.1rem; font-weight: 700; color: #1E293B; margin-bottom: 0.4rem; }
+        .bedankt p { font-size: 0.88rem; color: #64748B; line-height: 1.6; }
+
+        .footer-tekst {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #94A3B8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="kaart">
+    <div class="logo">Borg<span>Biz</span></div>
+
+    <div id="stap-vraag">
+        <h1>Hoe was jouw ervaring?</h1>
+        <p class="sub" id="sub-tekst">We horen graag wat je van onze samenwerking vond.</p>
+
+        <div id="project-tag" class="project-tag" style="display:none;"></div>
+
+        <div class="knoppen">
+            <button class="knop tevreden" onclick="keuze('tevreden')">
+                <span class="emoji">😊</span>
+                <span class="label">Tevreden</span>
+            </button>
+            <button class="knop neutraal" onclick="keuze('neutraal')">
+                <span class="emoji">😐</span>
+                <span class="label">Neutraal</span>
+            </button>
+            <button class="knop ontevreden" onclick="keuze('ontevreden')">
+                <span class="emoji">😞</span>
+                <span class="label">Niet tevreden</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Feedbackformulier (neutraal / ontevreden) -->
+    <div class="feedback-form" id="feedback-form">
+        <label for="bericht">Wat kan er beter? <span style="font-weight:400;color:#94A3B8">(optioneel)</span></label>
+        <textarea id="bericht" placeholder="Vertel ons wat je anders had gewild..."></textarea>
+        <button class="btn-verzend" id="btn-verzend" onclick="verstuurFeedback()">Verstuur feedback</button>
+    </div>
+
+    <!-- Bedankt na formulier -->
+    <div class="bedankt" id="bedankt-feedback">
+        <div class="icon">🙏</div>
+        <h2>Bedankt voor je eerlijkheid</h2>
+        <p>We nemen je feedback serieus en gebruiken het om beter te worden. Robbin neemt indien nodig contact met je op.</p>
+    </div>
+
+    <!-- Bedankt na review (komt terug van Google) -->
+    <div class="bedankt" id="bedankt-review" style="display:none;">
+        <div class="icon">⭐</div>
+        <h2>Geweldig, bedankt!</h2>
+        <p>Jouw review helpt andere ondernemers om Borg Biz te vinden. We waarderen het enorm!</p>
+    </div>
+</div>
+
+<p class="footer-tekst">Borg Biz &middot; borgbiz.nl &middot; info@borgbiz.nl</p>
+
+<script>
+    const GOOGLE_REVIEW_URL = 'https://g.page/r/Cd4yxMItwOXpEBM/review';
+
+    const params = new URLSearchParams(window.location.search);
+    const naam    = params.get('naam')    || '';
+    const email   = params.get('email')   || '';
+    const project = params.get('project') || '';
+    const bedankt = params.get('bedankt') || '';
+
+    if (naam) {
+        document.getElementById('sub-tekst').textContent = `Hoi ${naam}, fijn dat je even de tijd neemt!`;
+    }
+
+    if (project) {
+        const tag = document.getElementById('project-tag');
+        tag.textContent = project;
+        tag.style.display = 'inline-block';
+    }
+
+    if (bedankt === 'review') {
+        document.getElementById('stap-vraag').style.display = 'none';
+        document.getElementById('bedankt-review').style.display = 'block';
+    }
+
+    function keuze(type) {
+        if (type === 'tevreden') {
+            window.location.href = GOOGLE_REVIEW_URL;
+            return;
+        }
+        document.getElementById('feedback-form').style.display = 'block';
+        document.getElementById('feedback-form').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    async function verstuurFeedback() {
+        const bericht = document.getElementById('bericht').value.trim();
+        const btn = document.getElementById('btn-verzend');
+
+        btn.disabled = true;
+        btn.textContent = 'Versturen...';
+
+        const body = {
+            naam:    naam    || 'Anoniem',
+            email:   email   || 'geen@email.nl',
+            dienst:  project || 'Feedback via feedbackpagina',
+            bericht: bericht || '(geen toelichting gegeven)'
+        };
+
+        try {
+            await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+        } catch (_) {}
+
+        document.getElementById('feedback-form').style.display = 'none';
+        document.getElementById('bedankt-feedback').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
