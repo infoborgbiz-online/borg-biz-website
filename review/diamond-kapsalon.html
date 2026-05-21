@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jouw ervaring bij Diamond Kapsalon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #111;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .kaart {
+            background: #1C1C1C;
+            border-radius: 20px;
+            border: 1px solid #2A2A2A;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+            padding: 2.5rem 2rem;
+            max-width: 460px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo-naam {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #C9A84C;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #F5F5F5;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub {
+            font-size: 0.88rem;
+            color: #888;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .knoppen {
+            display: flex;
+            gap: 0.85rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .knop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.1rem 1.2rem;
+            border: 2px solid #2E2E2E;
+            border-radius: 14px;
+            cursor: pointer;
+            background: #232323;
+            transition: all 0.18s;
+            min-width: 105px;
+            font-family: inherit;
+        }
+
+        .knop:hover { transform: translateY(-3px); }
+        .knop.tevreden:hover  { border-color: #C9A84C; background: #1F1A0E; }
+        .knop.neutraal:hover  { border-color: #F59E0B; background: #1A1500; }
+        .knop.ontevreden:hover { border-color: #EF4444; background: #1A0000; }
+
+        .knop .emoji { font-size: 1.9rem; }
+        .knop .label { font-size: 0.78rem; font-weight: 600; color: #AAA; }
+
+        /* Feedbackformulier */
+        .feedback-form {
+            display: none;
+            text-align: left;
+            margin-top: 1.75rem;
+            border-top: 1px solid #2A2A2A;
+            padding-top: 1.75rem;
+        }
+
+        .feedback-form label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #AAA;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-form textarea {
+            width: 100%;
+            border: 1.5px solid #2E2E2E;
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            font-family: inherit;
+            font-size: 0.88rem;
+            color: #F0F0F0;
+            background: #232323;
+            resize: vertical;
+            min-height: 100px;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .feedback-form textarea:focus { border-color: #C9A84C; }
+
+        .btn-verzend {
+            width: 100%;
+            background: #C9A84C;
+            color: #111;
+            border: none;
+            border-radius: 10px;
+            padding: 0.85rem;
+            font-family: inherit;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.15s;
+        }
+
+        .btn-verzend:hover { background: #B8952E; }
+        .btn-verzend:disabled { background: #5A4A1A; color: #888; cursor: not-allowed; }
+
+        /* Bedankt */
+        .bedankt { display: none; margin-top: 1.75rem; border-top: 1px solid #2A2A2A; padding-top: 1.75rem; }
+        .bedankt .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .bedankt h2 { font-size: 1.05rem; font-weight: 700; color: #F0F0F0; margin-bottom: 0.4rem; }
+        .bedankt p { font-size: 0.85rem; color: #888; line-height: 1.6; }
+
+        .footer-tekst { margin-top: 1.75rem; font-size: 0.7rem; color: #444; }
+        .footer-tekst a { color: #555; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="kaart">
+    <div class="logo-naam">Diamond Kapsalon</div>
+    <div class="logo-sub">Klazienaveen</div>
+
+    <div id="stap-vraag">
+        <h1>Hoe was je knipbeurt?</h1>
+        <p class="sub" id="sub-tekst">We stellen je mening enorm op prijs. Het duurt maar een seconde.</p>
+
+        <div class="knoppen">
+            <button class="knop tevreden" onclick="keuze('tevreden')">
+                <span class="emoji">😊</span>
+                <span class="label">Tevreden</span>
+            </button>
+            <button class="knop neutraal" onclick="keuze('neutraal')">
+                <span class="emoji">😐</span>
+                <span class="label">Neutraal</span>
+            </button>
+            <button class="knop ontevreden" onclick="keuze('ontevreden')">
+                <span class="emoji">😞</span>
+                <span class="label">Niet tevreden</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="feedback-form" id="feedback-form">
+        <label for="bericht">Wat kan er beter? <span style="font-weight:400;color:#555">(optioneel)</span></label>
+        <textarea id="bericht" placeholder="Vertel ons wat je anders had gewild..."></textarea>
+        <button class="btn-verzend" id="btn-verzend" onclick="verstuurFeedback()">Verstuur feedback</button>
+    </div>
+
+    <div class="bedankt" id="bedankt-feedback">
+        <div class="icon">🙏</div>
+        <h2>Bedankt voor je eerlijkheid</h2>
+        <p>We nemen je feedback serieus. Mahmud doet zijn best om het de volgende keer nog beter te maken.</p>
+    </div>
+
+    <div class="bedankt" id="bedankt-review" style="display:none;">
+        <div class="icon">⭐</div>
+        <h2>Top, bedankt!</h2>
+        <p>Jouw review helpt Diamond Kapsalon om meer klanten te bereiken. Super bedankt!</p>
+    </div>
+</div>
+
+<p class="footer-tekst">Diamond Kapsalon &middot; Langestraat 132B, Klazienaveen &middot; <a href="tel:0684475283">0684475283</a></p>
+
+<script>
+    const GOOGLE_REVIEW_URL = 'PLACEHOLDER_GOOGLE_REVIEW_URL';
+    const CLIENT_ID = 'diamond-kapsalon';
+
+    const params = new URLSearchParams(window.location.search);
+    const naam = params.get('naam') || '';
+
+    if (naam) {
+        document.getElementById('sub-tekst').textContent = `Hoi ${naam}, hoe was je knipbeurt bij Mahmud?`;
+    }
+
+    if (params.get('bedankt') === 'review') {
+        document.getElementById('stap-vraag').style.display = 'none';
+        document.getElementById('bedankt-review').style.display = 'block';
+    }
+
+    function keuze(type) {
+        if (type === 'tevreden') {
+            window.location.href = GOOGLE_REVIEW_URL;
+            return;
+        }
+        document.getElementById('feedback-form').style.display = 'block';
+        document.getElementById('feedback-form').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    async function verstuurFeedback() {
+        const bericht = document.getElementById('bericht').value.trim();
+        const btn = document.getElementById('btn-verzend');
+        btn.disabled = true;
+        btn.textContent = 'Versturen...';
+
+        try {
+            await fetch('/api/review-feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ client_id: CLIENT_ID, klant_naam: naam || 'Anoniem', bericht: bericht || '(geen toelichting)' })
+            });
+        } catch (_) {}
+
+        document.getElementById('feedback-form').style.display = 'none';
+        document.getElementById('bedankt-feedback').style.display = 'block';
+    }
+</script>
+</body>
+</html>
