@@ -8,60 +8,142 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 1rem; }
-        .kaart { border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 40px rgba(0,0,0,0.3); padding: 2.5rem 2rem; max-width: 460px; width: 100%; text-align: center; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .kaart {
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+            padding: 2.5rem 2rem;
+            max-width: 460px;
+            width: 100%;
+            text-align: center;
+        }
+
         .logo-naam { font-size: 1.3rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.3rem; }
         .logo-sub { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2rem; }
+
         h1 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
         .sub { font-size: 0.88rem; margin-bottom: 2rem; line-height: 1.5; }
+
         .knoppen { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
-        .knop { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1.1rem 1.2rem; border: 2px solid rgba(255,255,255,0.1); border-radius: 14px; cursor: pointer; background: rgba(255,255,255,0.05); transition: all 0.18s; min-width: 105px; font-family: inherit; }
+
+        .knop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.1rem 1.2rem;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.05);
+            transition: all 0.18s;
+            min-width: 105px;
+            font-family: inherit;
+        }
+
         .knop:hover { transform: translateY(-3px); }
         .knop .emoji { font-size: 1.9rem; }
         .knop .label { font-size: 0.78rem; font-weight: 600; opacity: 0.7; }
+
         .feedback-form { display: none; text-align: left; margin-top: 1.75rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.75rem; }
         .feedback-form label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.5rem; opacity: 0.7; }
-        .feedback-form textarea { width: 100%; border: 1.5px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.85rem 1rem; font-family: inherit; font-size: 0.88rem; background: rgba(255,255,255,0.05); color: inherit; resize: vertical; min-height: 100px; outline: none; transition: border-color 0.15s; }
-        .btn-verzend { width: 100%; border: none; border-radius: 10px; padding: 0.85rem; font-family: inherit; font-size: 0.92rem; font-weight: 700; cursor: pointer; margin-top: 1rem; transition: opacity 0.15s; }
+
+        .feedback-form textarea {
+            width: 100%;
+            border: 1.5px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            font-family: inherit;
+            font-size: 0.88rem;
+            background: rgba(255,255,255,0.05);
+            color: inherit;
+            resize: vertical;
+            min-height: 100px;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .btn-verzend {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 0.85rem;
+            font-family: inherit;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: opacity 0.15s;
+        }
+
         .btn-verzend:hover { opacity: 0.88; }
         .btn-verzend:disabled { opacity: 0.4; cursor: not-allowed; }
+
         .bedankt { display: none; margin-top: 1.75rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.75rem; }
         .bedankt .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
         .bedankt h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
         .bedankt p { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
+
         .footer-tekst { margin-top: 1.75rem; font-size: 0.7rem; opacity: 0.3; }
         .footer-tekst a { color: inherit; text-decoration: none; }
     </style>
 </head>
 <body>
+
 <div class="kaart" id="kaart">
     <div class="logo-naam" id="logo-naam"></div>
     <div class="logo-sub" id="logo-sub"></div>
+
     <div id="stap-vraag">
         <h1 id="vraag-titel"></h1>
         <p class="sub" id="sub-tekst"></p>
+
         <div class="knoppen">
-            <button class="knop" onclick="keuze('tevreden')"><span class="emoji">😊</span><span class="label">Tevreden</span></button>
-            <button class="knop" onclick="keuze('neutraal')"><span class="emoji">😐</span><span class="label">Neutraal</span></button>
-            <button class="knop" onclick="keuze('ontevreden')"><span class="emoji">😞</span><span class="label">Niet tevreden</span></button>
+            <button class="knop tevreden" onclick="keuze('tevreden')">
+                <span class="emoji">😊</span>
+                <span class="label">Tevreden</span>
+            </button>
+            <button class="knop neutraal" onclick="keuze('neutraal')">
+                <span class="emoji">😐</span>
+                <span class="label">Neutraal</span>
+            </button>
+            <button class="knop ontevreden" onclick="keuze('ontevreden')">
+                <span class="emoji">😞</span>
+                <span class="label">Niet tevreden</span>
+            </button>
         </div>
     </div>
+
     <div class="feedback-form" id="feedback-form">
         <label>Wat kan er beter? <span style="font-weight:400;opacity:0.4">(optioneel)</span></label>
         <textarea id="bericht" placeholder="Vertel ons wat je anders had gewild..."></textarea>
         <button class="btn-verzend" id="btn-verzend" onclick="verstuurFeedback()">Verstuur feedback</button>
     </div>
+
     <div class="bedankt" id="bedankt-feedback">
         <div class="icon">🙏</div>
         <h2>Bedankt voor je eerlijkheid</h2>
         <p id="bedankt-feedback-tekst"></p>
     </div>
+
     <div class="bedankt" id="bedankt-review" style="display:none;">
         <div class="icon">⭐</div>
         <h2>Top, bedankt!</h2>
         <p id="bedankt-review-tekst"></p>
     </div>
 </div>
+
 <p class="footer-tekst" id="footer-tekst"></p>
 
 <script>
@@ -69,21 +151,21 @@
        CONFIGURATIE , alleen dit aanpassen per klant
        ============================================================ */
     const CONFIG = {
-        naam:             'Diamond Kapsalon',
-        subtitel:         'Klazienaveen',
-        vraag:            'Hoe was je knipbeurt?',
+        naam:             'BEDRIJFSNAAM',
+        subtitel:         'PLAATSNAAM',
+        vraag:            'Hoe was je ervaring?',
         sub_default:      'We stellen je mening enorm op prijs.',
-        sub_met_naam:     'Hoi {naam}, hoe was je knipbeurt bij Mahmud?',
+        sub_met_naam:     'Hoi {naam}, fijn dat je even de tijd neemt!',
         kleur_accent:     '#C9A84C',
         kleur_achtergrond:'#111111',
         kleur_kaart:      '#1C1C1C',
         kleur_tekst:      '#F0F0F0',
-        google_url:       'PLACEHOLDER_GOOGLE_REVIEW_URL',
-        client_id:        'diamond-kapsalon',
-        adres:            'Langestraat 132B, Klazienaveen',
-        telefoon:         '0684475283',
-        bedankt_feedback: 'Mahmud doet zijn best om het de volgende keer nog beter te maken.',
-        bedankt_review:   'Jouw review helpt Diamond Kapsalon om meer klanten te bereiken. Super bedankt!'
+        google_url:       'GOOGLE_REVIEW_URL',
+        client_id:        'CLIENT_ID',
+        adres:            'ADRES',
+        telefoon:         'TELEFOONNUMMER',
+        bedankt_feedback: 'We nemen je feedback serieus en doen ons best om het beter te maken.',
+        bedankt_review:   'Jouw review helpt ons om meer klanten te bereiken. Super bedankt!'
     };
     /* ============================================================ */
 
@@ -99,6 +181,7 @@
     document.body.style.background = CONFIG.kleur_achtergrond;
     document.getElementById('kaart').style.background = CONFIG.kleur_kaart;
     document.getElementById('kaart').style.color = CONFIG.kleur_tekst;
+    document.querySelector('.feedback-form textarea').style.borderColor = 'rgba(255,255,255,0.1)';
 
     const adresDelen = [CONFIG.naam, CONFIG.adres, CONFIG.telefoon].filter(Boolean);
     document.getElementById('footer-tekst').innerHTML = adresDelen
@@ -107,6 +190,7 @@
 
     const params = new URLSearchParams(window.location.search);
     const naam = params.get('naam') || '';
+
     document.getElementById('sub-tekst').textContent = naam
         ? CONFIG.sub_met_naam.replace('{naam}', naam)
         : CONFIG.sub_default;
