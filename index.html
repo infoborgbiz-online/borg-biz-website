@@ -37,7 +37,7 @@
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; scroll-padding-top: 75px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--dark);
@@ -472,6 +472,7 @@
         .pricing-grid {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 1.25rem; margin-top: 2rem; align-items: start;
+            padding-bottom: 1rem;
         }
         .pricing-card {
             background: var(--gray-800); border-radius: 16px; padding: 1.5rem;
@@ -481,8 +482,9 @@
         .pricing-card:hover { transform: translateY(-3px); }
         .pricing-card.pricing-popular {
             background: var(--blue-700); border-color: var(--blue-500);
+            transform: scale(1.03);
         }
-        .pricing-card.pricing-popular:hover { transform: translateY(-3px); }
+        .pricing-card.pricing-popular:hover { transform: scale(1.03) translateY(-3px); }
         .pricing-badge {
             background: white; color: var(--blue-700);
             font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
