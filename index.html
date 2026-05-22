@@ -471,19 +471,18 @@
         #pricing .section-subtitle { color: rgba(255,255,255,0.6); max-width: 580px; }
         .pricing-grid {
             display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem; margin-top: 3rem; align-items: start;
+            gap: 1.25rem; margin-top: 2rem; align-items: start;
         }
         .pricing-card {
-            background: var(--gray-800); border-radius: 20px; padding: 2rem;
+            background: var(--gray-800); border-radius: 16px; padding: 1.5rem;
             border: 1px solid rgba(255,255,255,0.08);
             display: flex; flex-direction: column; transition: transform 0.2s;
         }
-        .pricing-card:hover { transform: translateY(-4px); }
+        .pricing-card:hover { transform: translateY(-3px); }
         .pricing-card.pricing-popular {
             background: var(--blue-700); border-color: var(--blue-500);
-            transform: scale(1.04);
         }
-        .pricing-card.pricing-popular:hover { transform: scale(1.04) translateY(-4px); }
+        .pricing-card.pricing-popular:hover { transform: translateY(-3px); }
         .pricing-badge {
             background: white; color: var(--blue-700);
             font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
@@ -491,12 +490,12 @@
             border-radius: 100px; display: inline-block;
             margin-bottom: 1.25rem; align-self: flex-start;
         }
-        .pricing-naam { font-size: 1.2rem; font-weight: 800; color: white; margin-bottom: 0.25rem; }
-        .pricing-voor { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; }
+        .pricing-naam { font-size: 1.1rem; font-weight: 800; color: white; margin-bottom: 0.25rem; }
+        .pricing-voor { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-bottom: 1rem; }
         .pricing-prijs { margin-bottom: 0.35rem; display: flex; align-items: baseline; gap: 0.3rem; }
-        .pricing-bedrag { font-size: 2.8rem; font-weight: 900; color: white; line-height: 1; }
-        .pricing-eenheid { font-size: 0.9rem; color: rgba(255,255,255,0.55); }
-        .pricing-mnd { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 1.75rem; }
+        .pricing-bedrag { font-size: 2rem; font-weight: 900; color: white; line-height: 1; }
+        .pricing-eenheid { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+        .pricing-mnd { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 1.25rem; }
         .pricing-popular .pricing-mnd { color: rgba(255,255,255,0.65); }
         .pricing-features { list-style: none; margin-bottom: 2rem; flex: 1; }
         .pricing-features li {
@@ -840,9 +839,9 @@
 <!-- ===== PRICING ===== -->
 <section id="pricing" aria-labelledby="pricing-titel">
     <div class="container">
-        <p class="section-label">Prijzen</p>
+        <p class="section-label">Pakketten</p>
         <h2 class="section-title" id="pricing-titel">Transparant en eerlijk geprijsd</h2>
-        <p class="section-subtitle">Geen verborgen kosten, geen verrassingen. Hieronder een overzicht van wat wij bieden. Niet helemaal passend? We maken graag een offerte op maat.</p>
+        <p class="section-subtitle">Geen verborgen kosten, geen verrassingen. Niet helemaal passend? We maken graag een offerte op maat.</p>
         <div class="pricing-grid">
 
             <div class="pricing-card">
