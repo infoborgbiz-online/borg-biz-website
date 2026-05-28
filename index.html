@@ -496,8 +496,15 @@
         .pricing-prijs { margin-bottom: 0.35rem; display: flex; align-items: baseline; gap: 0.3rem; }
         .pricing-bedrag { font-size: 2rem; font-weight: 900; color: white; line-height: 1; }
         .pricing-eenheid { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
-        .pricing-mnd { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 1.25rem; }
+        .pricing-mnd { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem; }
         .pricing-popular .pricing-mnd { color: rgba(255,255,255,0.65); }
+        .pricing-btw { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
+        .pricing-vergelijk { text-align: center; font-size: 0.95rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .pricing-social-proof { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+        .pricing-sterren { color: #f5a623; font-size: 1rem; letter-spacing: 1px; }
+        .pricing-score { font-size: 0.9rem; font-weight: 600; color: white; }
+        .pricing-klanten { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+        .pricing-usp { text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 2.5rem; font-style: italic; }
         .pricing-features { list-style: none; margin-bottom: 2rem; flex: 1; }
         .pricing-features li {
             display: flex; align-items: center; gap: 0.65rem;
@@ -843,6 +850,17 @@
         <p class="section-label">Pakketten</p>
         <h2 class="section-title" id="pricing-titel">Transparant en eerlijk geprijsd</h2>
         <p class="section-subtitle">Geen verborgen kosten, geen verrassingen. Niet helemaal passend? We maken graag een offerte op maat.</p>
+
+        <p class="pricing-vergelijk">Een losse website laten maken kost €800–2.500 eenmalig, plus hosting, updates en jouw eigen tijd. Wij regelen alles, al vanaf €69/mnd.</p>
+
+        <div class="pricing-social-proof">
+            <span class="pricing-sterren">★★★★★</span>
+            <span class="pricing-score">4.9 · 8 reviews</span>
+            <span class="pricing-klanten">· Actief voor lokale ondernemers in Drenthe</span>
+        </div>
+
+        <p class="pricing-usp">Kortste contracttermijn in het segment, na 12 maanden gewoon maandelijks opzegbaar.</p>
+
         <div class="pricing-grid">
 
             <div class="pricing-card">
@@ -852,7 +870,8 @@
                     <span class="pricing-bedrag">€69</span>
                     <span class="pricing-eenheid">/mnd</span>
                 </div>
-                <p class="pricing-mnd">Min. 12 mnd - daarna maandelijks opzegbaar</p>
+                <p class="pricing-mnd">Maandelijks opzegbaar na jaar 1</p>
+                <p class="pricing-btw">€83,49 incl. BTW</p>
                 <ul class="pricing-features">
                     <li><i class="fas fa-check" aria-hidden="true"></i> Professionele landingspagina</li>
                     <li><i class="fas fa-check" aria-hidden="true"></i> Hosting &amp; SSL inbegrepen</li>
@@ -861,13 +880,9 @@
                     <li><i class="fas fa-check" aria-hidden="true"></i> Google Mijn Bedrijf koppeling</li>
                     <li><i class="fas fa-check" aria-hidden="true"></i> Mobiel geoptimaliseerd</li>
                     <li><i class="fas fa-check" aria-hidden="true"></i> 1x aanpassing per maand</li>
-                    <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> SEO &amp; rapportage</li>
-                    <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> CRM systeem</li>
-                    <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> Marketing campagnes</li>
-                    <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> Google Review module</li>
                 </ul>
                 <a href="#contact" class="pricing-cta" onclick="kiesPakket('pakket-starter'); return false;">
-                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Start nu
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Kies Starter
                 </a>
             </div>
 
@@ -879,7 +894,8 @@
                     <span class="pricing-bedrag">€129</span>
                     <span class="pricing-eenheid">/mnd</span>
                 </div>
-                <p class="pricing-mnd">Min. 12 mnd - daarna maandelijks opzegbaar</p>
+                <p class="pricing-mnd">Maandelijks opzegbaar na jaar 1</p>
+                <p class="pricing-btw">€155,99 incl. BTW</p>
                 <ul class="pricing-features">
                     <li><i class="fas fa-check" aria-hidden="true"></i> Website met meerdere pagina's</li>
                     <li><i class="fas fa-check" aria-hidden="true"></i> Hosting &amp; SSL inbegrepen</li>
@@ -889,12 +905,12 @@
                     <li><i class="fas fa-check" aria-hidden="true"></i> Maandelijkse SEO rapportage</li>
                     <li><i class="fas fa-check" aria-hidden="true"></i> Blog &amp; content setup</li>
                     <li><i class="fas fa-check" aria-hidden="true"></i> 3x aanpassingen per maand</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Google Review module</li>
                     <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> CRM systeem</li>
                     <li class="pricing-nee"><i class="fas fa-xmark" aria-hidden="true"></i> Marketing campagnes</li>
-                    <li><i class="fas fa-check" aria-hidden="true"></i> Google Review module</li>
                 </ul>
                 <a href="#contact" class="pricing-cta pricing-cta-popular" onclick="kiesPakket('pakket-groei'); return false;">
-                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Start nu
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Kies Groei
                 </a>
             </div>
 
@@ -902,10 +918,11 @@
                 <p class="pricing-naam">Pro</p>
                 <p class="pricing-voor">Volledig ontzorgd</p>
                 <div class="pricing-prijs">
-                    <span class="pricing-bedrag">€229</span>
+                    <span class="pricing-bedrag">€279</span>
                     <span class="pricing-eenheid">/mnd</span>
                 </div>
-                <p class="pricing-mnd">Min. 12 mnd - daarna maandelijks opzegbaar</p>
+                <p class="pricing-mnd">Maandelijks opzegbaar na jaar 1</p>
+                <p class="pricing-btw">€337,59 incl. BTW</p>
                 <ul class="pricing-features">
                     <li><i class="fas fa-check" aria-hidden="true"></i> Maatwerk website (onbeperkt)</li>
                     <li><i class="fas fa-check" aria-hidden="true"></i> Hosting &amp; SSL inbegrepen</li>
@@ -920,7 +937,7 @@
                     <li><i class="fas fa-check" aria-hidden="true"></i> Google Review module</li>
                 </ul>
                 <a href="#contact" class="pricing-cta" onclick="kiesPakket('pakket-pro'); return false;">
-                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Start nu
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Kies Pro
                 </a>
             </div>
 
