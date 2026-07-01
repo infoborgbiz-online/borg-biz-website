@@ -4,192 +4,361 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algemene Voorwaarden | Borg Biz</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; color: #111827; background: #F9FAFB; line-height: 1.7; }
-        header { background: #111827; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-size: 1.4rem; font-weight: 800; color: white; text-decoration: none; }
-        .logo span { color: #3B82F6; }
-        .back-btn { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
-        .back-btn:hover { color: white; }
-        .container { max-width: 800px; margin: 3rem auto; padding: 0 2rem 4rem; }
-        .page-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
-        .last-updated { font-size: 0.85rem; color: #6B7280; margin-bottom: 3rem; }
-        .section-card { background: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; border: 1px solid #E5E7EB; }
-        h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem; color: #111827; display: flex; align-items: center; gap: 0.5rem; }
-        h2::before { content: ''; width: 4px; height: 20px; background: #3B82F6; border-radius: 2px; flex-shrink: 0; }
-        p { color: #4B5563; margin-bottom: 0.75rem; font-size: 0.95rem; }
-        p:last-child { margin-bottom: 0; }
-        ol { color: #4B5563; font-size: 0.95rem; padding-left: 1.5rem; margin-bottom: 0.75rem; }
-        ol li { margin-bottom: 0.5rem; }
-        a { color: #3B82F6; }
-        footer { text-align: center; padding: 2rem; color: #9CA3AF; font-size: 0.85rem; border-top: 1px solid #E5E7EB; }
-        footer a { color: #3B82F6; text-decoration: none; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f3f4f6;
+            color: #111827;
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .pagina {
+            max-width: 820px;
+            margin: 2rem auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: #111827;
+            padding: 2.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .bedrijfsnaam { font-size: 1.6rem; font-weight: 700; color: #fff; }
+        .bedrijfsnaam span { color: #3B82F6; }
+        .header-sub { color: #9CA3AF; font-size: 0.82rem; margin-top: 0.25rem; }
+        .doc-label { text-align: right; }
+        .doc-label .titel { font-size: 1.3rem; font-weight: 700; color: #3B82F6; }
+        .doc-label .sub { color: #9CA3AF; font-size: 0.82rem; margin-top: 0.25rem; }
+
+        .body { padding: 2.5rem 3rem; }
+
+        .intro {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-left: 4px solid #3B82F6;
+            border-radius: 0 10px 10px 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2.5rem;
+            color: #374151;
+            font-size: 0.9rem;
+        }
+
+        .artikel {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        .artikel:last-of-type { border-bottom: none; }
+
+        .artikel-titel {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .artikel-nummer {
+            background: #3B82F6;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+
+        .artikel p {
+            color: #374151;
+            font-size: 0.88rem;
+            margin-bottom: 0.75rem;
+        }
+        .artikel p:last-child { margin-bottom: 0; }
+
+        .artikel ol {
+            counter-reset: item;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .artikel ol li {
+            color: #374151;
+            font-size: 0.88rem;
+            display: flex;
+            gap: 0.75rem;
+            counter-increment: item;
+        }
+        .artikel ol li::before {
+            content: counter(item) ".";
+            color: #3B82F6;
+            font-weight: 700;
+            flex-shrink: 0;
+            min-width: 1.2rem;
+        }
+
+        .artikel ul {
+            list-style: disc;
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .artikel ul li {
+            color: #374151;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+        .artikel ul li strong {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .footer {
+            background: #111827;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links { color: #9CA3AF; font-size: 0.8rem; }
+        .footer-links a { color: #3B82F6; text-decoration: none; }
+        .footer-pagina { color: #6B7280; font-size: 0.8rem; }
+
+        @media print {
+            body { background: white; }
+            .pagina { margin: 0; box-shadow: none; border-radius: 0; }
+            .print-btn { display: none; }
+        }
+
+        .print-btn {
+            display: block;
+            max-width: 820px;
+            margin: 0 auto 1rem;
+            text-align: right;
+        }
+        .print-btn button {
+            background: #3B82F6;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .print-btn button:hover { background: #2563EB; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">Borg <span>Biz</span></a>
-        <a href="index.html" class="back-btn">&#8592; Terug naar website</a>
-    </header>
 
-    <div class="container">
-        <h1 class="page-title">Algemene Voorwaarden</h1>
-        <p class="last-updated">Versie 1.1 - april 2026 &nbsp;|&nbsp; KvK: 77531760</p>
+<div class="print-btn">
+    <button onclick="window.print()">⬇ Opslaan als PDF</button>
+</div>
 
-        <div class="section-card">
-            <h2>Artikel 1 - Definities</h2>
+<div class="pagina">
+
+    <div class="header">
+        <div>
+            <div class="bedrijfsnaam">Borg <span>Biz</span></div>
+            <div class="header-sub">borgbiz.nl &nbsp;·&nbsp; info@borgbiz.nl</div>
+            <div class="header-sub">KvK: 77531760 &nbsp;·&nbsp; Emmen</div>
+        </div>
+        <div class="doc-label">
+            <div class="titel">ALGEMENE VOORWAARDEN</div>
+            <div class="sub">Versie 1.0 &nbsp;·&nbsp; april 2026</div>
+        </div>
+    </div>
+
+    <div class="body">
+
+        <div class="intro">
+            Deze algemene voorwaarden zijn van toepassing op alle offertes, overeenkomsten en diensten van Borg Biz, gevestigd te Emmen, ingeschreven bij de Kamer van Koophandel onder nummer 77531760.
+        </div>
+
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">1</span> Definities</div>
             <ol>
-                <li><strong>Borg Biz:</strong> de eenmanszaak Borg Biz, gevestigd te Emmen, KvK 77531760.</li>
+                <li><strong>Borg Biz:</strong> de eenmanszaak Borg Biz, gevestigd te Emmen, hierna te noemen "opdrachtnemer".</li>
                 <li><strong>Opdrachtgever:</strong> de natuurlijke persoon of rechtspersoon die een overeenkomst aangaat met Borg Biz.</li>
-                <li><strong>Diensten:</strong> alle werkzaamheden van Borg Biz, waaronder websiteontwikkeling, hostingbeheer, Odoo-implementatie en aanverwante digitale diensten.</li>
-                <li><strong>Overeenkomst:</strong> de schriftelijke of digitale afspraak tussen Borg Biz en opdrachtgever, inclusief geaccepteerde offertes.</li>
+                <li><strong>Diensten:</strong> alle werkzaamheden en producten die Borg Biz levert, waaronder websiteontwikkeling, hostingbeheer, Odoo-implementatie en aanverwante digitale diensten.</li>
+                <li><strong>Overeenkomst:</strong> de schriftelijke of digitale afspraak tussen Borg Biz en opdrachtgever, inclusief offertes die door opdrachtgever zijn geaccepteerd.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 2 - Toepasselijkheid</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">2</span> Toepasselijkheid</div>
             <ol>
                 <li>Deze algemene voorwaarden zijn van toepassing op alle offertes, aanbiedingen en overeenkomsten tussen Borg Biz en opdrachtgever.</li>
-                <li>Afwijkingen zijn alleen geldig indien schriftelijk overeengekomen.</li>
+                <li>Afwijkingen van deze voorwaarden zijn alleen geldig indien schriftelijk overeengekomen.</li>
                 <li>De toepasselijkheid van algemene voorwaarden van de opdrachtgever wordt uitdrukkelijk van de hand gewezen.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 3 - Offertes en totstandkoming overeenkomst</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">3</span> Offertes en totstandkoming overeenkomst</div>
             <ol>
-                <li>Alle offertes zijn vrijblijvend en geldig gedurende 30 dagen na offertedatum, tenzij anders vermeld.</li>
-                <li>Een overeenkomst komt tot stand op het moment dat opdrachtgever de offerte schriftelijk of digitaal accepteert.</li>
+                <li>Alle offertes van Borg Biz zijn vrijblijvend en geldig gedurende 30 dagen na offertedatum, tenzij anders vermeld.</li>
+                <li>Een overeenkomst komt tot stand op het moment dat opdrachtgever de offerte schriftelijk of digitaal accepteert, of wanneer Borg Biz een begin maakt met de uitvoering na akkoord.</li>
                 <li>Borg Biz behoudt zich het recht voor een opdracht te weigeren zonder opgave van reden.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 4 - Uitvoering van de overeenkomst</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">4</span> Uitvoering van de overeenkomst</div>
             <ol>
-                <li>Borg Biz voert werkzaamheden naar beste inzicht en vermogen uit.</li>
-                <li>Opdrachtgever is verantwoordelijk voor het tijdig aanleveren van correcte informatie, materialen en toegangen.</li>
-                <li>Vertragingen door het niet tijdig aanleveren van informatie komen niet voor rekening van Borg Biz.</li>
+                <li>Borg Biz voert de werkzaamheden naar beste inzicht en vermogen uit.</li>
+                <li>Opdrachtgever is verantwoordelijk voor het tijdig aanleveren van correcte informatie, materialen en toegangen die nodig zijn voor de uitvoering.</li>
+                <li>Vertragingen door het niet tijdig aanleveren van informatie door opdrachtgever komen niet voor rekening van Borg Biz.</li>
                 <li>Borg Biz heeft het recht werkzaamheden (deels) door derden te laten uitvoeren.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 5 - Wijzigingen en meerwerk</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">5</span> Wijzigingen en meerwerk</div>
             <ol>
-                <li>Wijzigingen na akkoord op de offerte worden beschouwd als meerwerk en apart begroot.</li>
-                <li>Borg Biz informeert opdrachtgever vooraf over meerwerkkosten en wacht op akkoord.</li>
-                <li>Kleine aanpassingen binnen de scope worden niet als meerwerk beschouwd.</li>
+                <li>Wijzigingen in de opdracht na akkoord op de offerte worden beschouwd als meerwerk en apart begroot.</li>
+                <li>Borg Biz zal opdrachtgever vooraf informeren over de kosten van meerwerk en wacht op akkoord voordat de werkzaamheden worden uitgevoerd.</li>
+                <li>Kleine aanpassingen binnen de scope van de offerte worden niet als meerwerk beschouwd.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 6 - Prijzen en betaling</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">6</span> Prijzen en betaling</div>
             <ol>
                 <li>Alle genoemde prijzen zijn exclusief BTW, tenzij uitdrukkelijk anders vermeld.</li>
-                <li>Eenmalige implementatiefees worden gefactureerd conform de offerte: standaard 50% bij opdrachtverstrekking en 50% bij oplevering, tenzij schriftelijk anders overeengekomen.</li>
-                <li>Bij een betaalplan (gespreide betaling) wordt het maandbedrag vooraf per kalendermaand gefactureerd, startend bij livegang van de website.</li>
-                <li>Maandelijkse hosting- en beheerskosten worden vooraf per kalendermaand gefactureerd.</li>
+                <li>Eenmalige implementatiefees worden als volgt gefactureerd: 50% bij opdrachtverstrekking, 50% bij oplevering.</li>
+                <li>Maandelijkse kosten worden vooraf per maand gefactureerd.</li>
                 <li>Betaling dient te geschieden binnen 14 dagen na factuurdatum.</li>
-                <li>Bij niet-tijdige betaling ontvangt opdrachtgever een eerste herinnering. Bij uitblijven van betaling na een tweede aanmaning is Borg Biz gerechtigd de dienstverlening op te schorten en de website offline te halen, zonder dat dit recht geeft op restitutie van reeds betaalde bedragen.</li>
-                <li>Bij overschrijding van de betalingstermijn is de wettelijke rente verschuldigd vanaf de vervaldatum.</li>
-                <li>Alle buitengerechtelijke incassokosten komen voor rekening van de opdrachtgever.</li>
+                <li>Bij niet-tijdige betaling is Borg Biz gerechtigd de dienstverlening op te schorten totdat betaling heeft plaatsgevonden.</li>
+                <li>Bij overschrijding van de betalingstermijn is opdrachtgever de wettelijke rente verschuldigd.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 7 - Betaalplan en minimale looptijd</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">7</span> Hosting, uptime en beschikbaarheid</div>
             <ol>
-                <li>Wanneer partijen een betaalplan overeenkomen, geldt een minimale looptijd zoals vastgelegd in de offerte (12, 18 of 24 maanden).</li>
-                <li>Tussentijdse opzegging binnen de minimale looptijd is niet mogelijk. De resterende maandtermijnen worden in dat geval als één eindfactuur in rekening gebracht.</li>
-                <li>Na afloop van de minimale looptijd wordt de overeenkomst automatisch maandelijks verlengd tegen het dan geldende hostingtarief, tenzij opgezegd met een opzegtermijn van 1 kalendermaand.</li>
-                <li>Bij een betaalplan blijft de website eigendom van Borg Biz tot de volledige minimale looptijd is voltooid. Opdrachtgever verkrijgt een gebruiksrecht zolang de overeenkomst actief is en aan betalingsverplichtingen wordt voldaan.</li>
-                <li>Na voltooiing van de minimale looptijd kan opdrachtgever de bronbestanden opvragen tegen een eenmalige overdrachtsvergoeding van € 75,00 excl. BTW, tenzij schriftelijk anders overeengekomen.</li>
+                <li>Borg Biz spant zich in voor een optimale beschikbaarheid van de gehostde diensten (<strong>best effort</strong>), maar garandeert geen 100% uptime.</li>
+                <li>Borg Biz maakt gebruik van professionele hostingpartijen (o.a. Vercel, Odoo, Supabase). Borg Biz is <strong>niet aansprakelijk</strong> voor downtime, storingen of dataverlies als gevolg van:
+                    <ul>
+                        <li>Storingen bij externe hostingpartijen</li>
+                        <li>DDoS-aanvallen of andere cybercriminaliteit gericht op de infrastructuur</li>
+                        <li>Gepland onderhoud (na voorafgaande aankondiging waar mogelijk)</li>
+                        <li>Overmachtssituaties (stroomuitval, natuurrampen, overheidsmaatregelen)</li>
+                    </ul>
+                </li>
+                <li>Bij structurele downtime langer dan 24 aaneengesloten uren, veroorzaakt door een fout van Borg Biz, wordt één maand hostingkosten gerestitueerd als compensatie. Verdere schadevergoeding is uitgesloten.</li>
+                <li>Opdrachtgever is verantwoordelijk voor het aanleveren van correcte en actuele content op de website.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 8 - Hosting en beheer</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">7A</span> Security en gegevensbescherming</div>
             <ol>
-                <li>Borg Biz spant zich in voor optimale beschikbaarheid, maar garandeert geen 100% uptime.</li>
-                <li>Borg Biz behoudt zich het recht voor derden in te schakelen voor hostingdiensten (o.a. Vercel, Odoo).</li>
-                <li>Borg Biz is niet aansprakelijk voor schade door storingen bij externe hostingpartijen.</li>
-                <li>Bij niet-betaling na twee aanmaningen is Borg Biz gerechtigd de website per direct offline te halen. Reeds betaalde termijnen worden niet gerestitueerd.</li>
-                <li>Bij opzegging van de hostingdienst na afloop van de minimale looptijd wordt de website binnen 30 dagen offline gehaald. Opdrachtgever behoudt het recht de bronbestanden op te vragen conform artikel 9.</li>
+                <li>Borg Biz neemt <strong>redelijke beveiligingsmaatregelen</strong> volgens gangbare IT-standaarden (HTTPS, encryptie, updates, toegangsbeveiliging).</li>
+                <li>Borg Biz kan <strong>niet garanderen</strong> dat websites of software altijd volledig beschermd zijn tegen hacking, malware, datalekken of andere beveiligingsincidenten.</li>
+                <li>Bij een beveiligingsincident wordt opdrachtgever binnen 24 uur geïnformeerd en worden herstelmaatregelen genomen conform de AVG-wetgeving.</li>
+                <li>Borg Biz is <strong>niet aansprakelijk</strong> voor schade door hacking, malware of datalekken, tenzij sprake is van grove nalatigheid of opzet van Borg Biz.</li>
+                <li>Opdrachtgever is zelf verantwoordelijk voor het veilig beheren van inloggegevens en het naleven van beveiligingsaanbevelingen van Borg Biz.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 9 - Eigendom en overdracht van de website</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">7B</span> Backups en gegevensherstel</div>
             <ol>
-                <li><strong>Eenmalige implementatiefee (standaard model):</strong> Na volledige voldoening van de implementatiefee gaat het eigendom van de website over op de opdrachtgever. Bronbestanden zijn kosteloos opvraagbaar binnen 5 werkdagen na volledige betaling.</li>
-                <li><strong>Betaalplan model:</strong> De website blijft eigendom van Borg Biz gedurende de gehele minimale looptijd. Na voltooiing van de minimale looptijd kan opdrachtgever de bronbestanden opvragen tegen een overdrachtsvergoeding van € 75,00 excl. BTW.</li>
-                <li>Overdracht van bronbestanden omvat de HTML-, CSS- en JavaScript-bestanden van de website. Eventuele licenties van externe diensten (o.a. Odoo, Formspree) vallen niet onder de overdracht en dienen door opdrachtgever zelfstandig te worden afgesloten.</li>
-                <li>Borg Biz behoudt te allen tijde het recht het geleverde werk te tonen als referentie in haar portfolio, tenzij opdrachtgever dit schriftelijk weigert.</li>
-                <li>Door opdrachtgever aangeleverde materialen (teksten, logo's, foto's) blijven te allen tijde eigendom van opdrachtgever.</li>
-                <li>Opdrachtgever staat in voor het rechtmatig gebruik van aangeleverde materialen en vrijwaart Borg Biz voor aanspraken van derden hieromtrent.</li>
+                <li>Borg Biz maakt <strong>regelmatig backups</strong> van websites en software op basis van best effort. De frequentie en bewaartermijn zijn afhankelijk van het gekozen pakket en de technische mogelijkheden van de hostingpartij.</li>
+                <li>Borg Biz garandeert <strong>niet</strong> dat alle gegevens altijd volledig hersteld kunnen worden bij calamiteiten, crashes of dataverlies.</li>
+                <li>Opdrachtgever blijft <strong>zelf verantwoordelijk</strong> voor het maken van eigen backups van kritieke gegevens en content. Borg Biz kan op verzoek periodiek exportbestanden aanleveren.</li>
+                <li>Herstel van gegevens uit backups gebeurt op basis van best effort. Extra werkzaamheden voor herstel kunnen worden gefactureerd.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 10 - Opzegging en beëindiging</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">8</span> Intellectueel eigendom</div>
             <ol>
-                <li>Maandelijkse diensten zonder minimale looptijd zijn opzegbaar met een opzegtermijn van 1 kalendermaand.</li>
-                <li>Bij een betaalplan met minimale looptijd is tussentijdse opzegging niet mogelijk. Zie artikel 7 lid 2.</li>
-                <li>Opzegging dient schriftelijk of per e-mail te worden ingediend bij info@borgbiz.nl.</li>
-                <li>Na opzegging wordt de website binnen 30 dagen offline gehaald.</li>
-                <li>Opdrachtgever heeft na opzegging het recht de bronbestanden op te vragen conform artikel 9.</li>
-                <li>Borg Biz behoudt het recht de overeenkomst per direct te beëindigen bij aantoonbaar misbruik, fraude of ernstige schending van deze voorwaarden, zonder dat dit recht geeft op restitutie.</li>
+                <li>Na volledige betaling van de implementatiefee verkrijgt opdrachtgever het gebruiksrecht op de geleverde website en bijbehorende bestanden.</li>
+                <li>Borg Biz behoudt het recht het geleverde werk te gebruiken als referentie in haar portfolio, tenzij schriftelijk anders overeengekomen.</li>
+                <li>Door opdrachtgever aangeleverde materialen (logo's, foto's, teksten) blijven eigendom van opdrachtgever. Opdrachtgever garandeert dat gebruik hiervan geen inbreuk maakt op rechten van derden.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 11 - Overmacht</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">9</span> Aansprakelijkheid en uitsluiting</div>
             <ol>
-                <li>Borg Biz is niet gehouden tot nakoming bij overmacht, waaronder storingen bij internetproviders of externe hostingpartijen.</li>
-                <li>Bij overmacht langer dan 30 dagen hebben beide partijen het recht de overeenkomst te ontbinden zonder schadevergoeding.</li>
+                <li>De aansprakelijkheid van Borg Biz is <strong>in alle gevallen beperkt</strong> tot het bedrag dat in het betreffende geval door de beroepsaansprakelijkheidsverzekering wordt uitgekeerd. Bij ontbreken van een (volledige) uitkering is de aansprakelijkheid beperkt tot <strong>maximaal 3x het maandelijkse factuurbedrag</strong> van de betreffende opdracht, met een absoluut maximum van €5.000.</li>
+                <li>Borg Biz is <strong>uitdrukkelijk niet aansprakelijk</strong> voor:
+                    <ul>
+                        <li><strong>Indirecte schade</strong>, waaronder begrepen gederfde winst, gemiste besparingen, verminderde goodwill, omzetverlies, gemiste kansen, verlies van klanten of beschadiging van reputatie</li>
+                        <li>Schade door <strong>downtime korter dan 24 aaneengesloten uren</strong></li>
+                        <li>Schade veroorzaakt door <strong>externe partijen</strong> (Vercel, Odoo, Supabase, internetproviders, etc.)</li>
+                        <li>Schade door <strong>hacking, malware, DDoS-aanvallen</strong> of andere cybercriminaliteit (tenzij grove nalatigheid Borg Biz)</li>
+                        <li>Schade door <strong>softwarebugs of storingen</strong> die ondanks zorgvuldig testen zijn opgetreden</li>
+                        <li>Schade door <strong>handelingen of nalatigheden van opdrachtgever</strong> of door opdrachtgever ingeschakelde derden</li>
+                        <li><strong>Reputatieschade</strong> of imagoschade van welke aard dan ook</li>
+                    </ul>
+                </li>
+                <li>Claims moeten <strong>binnen 30 dagen na ontdekking</strong> schriftelijk worden gemeld. Claims die later worden gemeld vervallen.</li>
+                <li>Opdrachtgever vrijwaart Borg Biz voor aanspraken van derden die verband houden met door opdrachtgever aangeleverde materialen of informatie.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 12 - Geheimhouding en privacy</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">10</span> Geheimhouding</div>
             <ol>
-                <li>Beide partijen verplichten zich tot geheimhouding van alle vertrouwelijke informatie die zij van elkaar ontvangen.</li>
-                <li>Borg Biz verwerkt persoonsgegevens conform de Algemene Verordening Gegevensbescherming (AVG). Zie de privacyverklaring op borgbiz.nl/privacy.html voor meer informatie.</li>
+                <li>Beide partijen verplichten zich tot geheimhouding van alle vertrouwelijke informatie die zij in het kader van de overeenkomst van elkaar ontvangen.</li>
+                <li>Informatie geldt als vertrouwelijk als dit door de andere partij is medegedeeld of als dit redelijkerwijs voortvloeit uit de aard van de informatie.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 13 - Aansprakelijkheid</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">11</span> Opzegging en beëindiging</div>
             <ol>
-                <li>De aansprakelijkheid van Borg Biz is beperkt tot maximaal het factuurbedrag van de betreffende opdracht in de voorgaande 3 maanden.</li>
-                <li>Borg Biz is niet aansprakelijk voor indirecte schade, gevolgschade, gederfde winst of reputatieschade.</li>
-                <li>Borg Biz is niet aansprakelijk voor schade als gevolg van het offline gaan van de website door storingen bij externe partijen (Vercel, Odoo, domeinnaamregistrars).</li>
-                <li>Opdrachtgever vrijwaart Borg Biz voor aanspraken van derden die verband houden met door opdrachtgever aangeleverde materialen of de inhoud van de website.</li>
+                <li>Maandelijkse diensten zijn opzegbaar met een opzegtermijn van 1 kalendermaand.</li>
+                <li>Opzegging dient schriftelijk of per e-mail te worden ingediend bij Borg Biz.</li>
+                <li>Bij opzegging blijft opdrachtgever de kosten verschuldigd tot het einde van de lopende opzegtermijn.</li>
+                <li>Borg Biz is gerechtigd de overeenkomst per direct te ontbinden indien opdrachtgever zijn verplichtingen niet nakomt, surseance van betaling aanvraagt of failliet wordt verklaard.</li>
+                <li>Bij beëindiging van de hostingdienst levert Borg Biz op verzoek de websitebestanden aan opdrachtgever.</li>
             </ol>
         </div>
 
-        <div class="section-card">
-            <h2>Artikel 14 - Toepasselijk recht en geschillen</h2>
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">12</span> Overmacht</div>
             <ol>
-                <li>Op alle overeenkomsten is Nederlands recht van toepassing.</li>
-                <li>Partijen trachten geschillen in eerste instantie in onderling overleg op te lossen.</li>
-                <li>Indien dit niet slaagt, worden geschillen voorgelegd aan de bevoegde rechter in het arrondissement Noord-Nederland.</li>
+                <li>Borg Biz is niet gehouden tot het nakomen van verplichtingen indien sprake is van overmacht, waaronder storingen bij internetproviders, externe hostingpartijen of overheidsmaatregelen.</li>
+                <li>Bij overmacht van meer dan 30 aaneengesloten dagen hebben beide partijen het recht de overeenkomst te ontbinden zonder schadevergoeding.</li>
             </ol>
         </div>
+
+        <div class="artikel">
+            <div class="artikel-titel"><span class="artikel-nummer">13</span> Toepasselijk recht en geschillen</div>
+            <ol>
+                <li>Op alle overeenkomsten tussen Borg Biz en opdrachtgever is Nederlands recht van toepassing.</li>
+                <li>Geschillen worden in eerste instantie opgelost via overleg. Indien dit niet slaagt, worden geschillen voorgelegd aan de bevoegde rechter in het arrondissement Noord-Nederland.</li>
+            </ol>
+        </div>
+
     </div>
 
-    <footer>
-        © 2026 Borg Biz &nbsp;|&nbsp; KvK: 77531760 &nbsp;|&nbsp;
-        <a href="privacy.html">Privacyverklaring</a> &nbsp;|&nbsp;
-        <a href="index.html">Terug naar website</a>
-    </footer>
+    <div class="footer">
+        <div class="footer-links">
+            Borg Biz &nbsp;·&nbsp; <a href="https://borgbiz.nl">borgbiz.nl</a> &nbsp;·&nbsp; info@borgbiz.nl &nbsp;·&nbsp; KvK: 77531760
+        </div>
+        <div class="footer-pagina">Versie 1.1 — juni 2026</div>
+    </div>
+
+</div>
+
 </body>
 </html>
