@@ -95,30 +95,33 @@
         .artikel ol li {
             color: #374151;
             font-size: 0.88rem;
-            display: flex;
-            gap: 0.75rem;
             counter-increment: item;
+            position: relative;
+            padding-left: 2rem;
         }
         .artikel ol li::before {
             content: counter(item) ".";
             color: #3B82F6;
             font-weight: 700;
-            flex-shrink: 0;
-            min-width: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 0;
         }
 
         .artikel ul {
             list-style: disc;
-            margin-left: 2rem;
+            margin-left: 1.5rem;
             margin-top: 0.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
+            margin-bottom: 0.5rem;
         }
         .artikel ul li {
             color: #374151;
             font-size: 0.88rem;
             line-height: 1.6;
+            margin-bottom: 0.4rem;
+        }
+        .artikel ul li:last-child {
+            margin-bottom: 0;
         }
         .artikel ul li strong {
             color: #111827;
