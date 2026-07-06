@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback links - Intern</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #F1F5F9; color: #1E293B; padding: 2rem 1rem; }
+        .container { max-width: 700px; margin: 0 auto; }
+        h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .sub { color: #64748B; font-size: 0.88rem; margin-bottom: 2rem; }
+
+        .kaart { background: white; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); padding: 1.5rem; margin-bottom: 1.25rem; }
+        .kaart h2 { font-size: 0.95rem; font-weight: 700; color: #1E3A8A; margin-bottom: 0.75rem; }
+
+        label { display: block; font-size: 0.8rem; font-weight: 600; color: #475569; margin-bottom: 0.3rem; margin-top: 0.75rem; }
+        input { width: 100%; border: 1.5px solid #CBD5E1; border-radius: 8px; padding: 0.55rem 0.75rem; font-size: 0.88rem; font-family: inherit; color: #1E293B; outline: none; }
+        input:focus { border-color: #3B82F6; }
+
+        .btn { display: inline-block; margin-top: 1rem; background: #3B82F6; color: white; border: none; border-radius: 8px; padding: 0.65rem 1.25rem; font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .btn:hover { background: #2563EB; }
+
+        .link-output { margin-top: 1rem; background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.82rem; color: #334155; word-break: break-all; display: none; }
+        .link-output a { color: #3B82F6; font-weight: 600; }
+
+        .kopieer-btn { display: none; margin-top: 0.5rem; background: #E2E8F0; color: #334155; border: none; border-radius: 6px; padding: 0.4rem 0.85rem; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .kopieer-btn:hover { background: #CBD5E1; }
+
+        .uitleg { background: #DBEAFE; border-radius: 10px; padding: 1rem 1.25rem; font-size: 0.83rem; color: #1D4ED8; line-height: 1.6; margin-bottom: 1.25rem; }
+        .uitleg strong { display: block; margin-bottom: 0.3rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Feedback link generator</h1>
+    <p class="sub">Maak een gepersonaliseerde link aan om naar een klant te sturen na een project.</p>
+
+    <div class="uitleg">
+        <strong>Hoe werkt het?</strong>
+        Tevreden klant , gaat direct naar Google review.<br>
+        Neutraal / niet tevreden , vult feedbackformulier in, komt als lead in Odoo CRM.
+    </div>
+
+    <div class="kaart">
+        <h2>Link aanmaken</h2>
+
+        <label for="naam">Naam klant</label>
+        <input type="text" id="naam" placeholder="bijv. Jan de Vries" oninput="maakLink()">
+
+        <label for="email">E-mailadres klant</label>
+        <input type="email" id="email" placeholder="bijv. jan@janbedrijf.nl" oninput="maakLink()">
+
+        <label for="project">Project omschrijving</label>
+        <input type="text" id="project" placeholder="bijv. Website + Odoo koppeling" oninput="maakLink()">
+
+        <div class="link-output" id="link-output"></div>
+        <button class="kopieer-btn" id="kopieer-btn" onclick="kopieer()">Kopieer link</button>
+    </div>
+
+    <div class="kaart">
+        <h2>WhatsApp berichttekst</h2>
+        <div class="link-output" id="wa-output" style="display:none;"></div>
+        <button class="kopieer-btn" id="kopieer-wa" onclick="kopieerWa()">Kopieer WhatsApp tekst</button>
+    </div>
+
+</div>
+
+<script>
+    const BASE = 'https://borgbiz.nl/feedback';
+
+    function maakLink() {
+        const naam    = document.getElementById('naam').value.trim();
+        const email   = document.getElementById('email').value.trim();
+        const project = document.getElementById('project').value.trim();
+
+        if (!naam) {
+            document.getElementById('link-output').style.display = 'none';
+            document.getElementById('kopieer-btn').style.display = 'none';
+            document.getElementById('wa-output').style.display = 'none';
+            document.getElementById('kopieer-wa').style.display = 'none';
+            return;
+        }
+
+        const params = new URLSearchParams();
+        params.set('naam', naam);
+        if (email)   params.set('email', email);
+        if (project) params.set('project', project);
+
+        const link = `${BASE}?${params.toString()}`;
+
+        const linkOut = document.getElementById('link-output');
+        linkOut.innerHTML = `<a href="${link}" target="_blank">${link}</a>`;
+        linkOut.style.display = 'block';
+        document.getElementById('kopieer-btn').style.display = 'inline-block';
+
+        const waOut = document.getElementById('wa-output');
+        const voornaam = naam.split(' ')[0];
+        const projectTekst = project ? ` voor ${project}` : '';
+        waOut.textContent = `Hoi ${voornaam}, fijn dat alles klaar is${projectTekst}! Wil je even je ervaring delen? Het duurt maar een minuutje:\n\n${link}\n\nBedankt alvast!`;
+        waOut.style.display = 'block';
+        document.getElementById('kopieer-wa').style.display = 'inline-block';
+    }
+
+    function kopieer() {
+        const link = document.querySelector('#link-output a').href;
+        navigator.clipboard.writeText(link);
+        const btn = document.getElementById('kopieer-btn');
+        btn.textContent = 'Gekopieerd!';
+        setTimeout(() => btn.textContent = 'Kopieer link', 2000);
+    }
+
+    function kopieerWa() {
+        const tekst = document.getElementById('wa-output').textContent;
+        navigator.clipboard.writeText(tekst);
+        const btn = document.getElementById('kopieer-wa');
+        btn.textContent = 'Gekopieerd!';
+        setTimeout(() => btn.textContent = 'Kopieer WhatsApp tekst', 2000);
+    }
+</script>
+</body>
+</html>

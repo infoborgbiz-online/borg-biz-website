@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commissie Beheer | Borg Biz</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --blue: #3B82F6;
+            --blue-dark: #1E3A8A;
+            --dark: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-400: #9CA3AF;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --white: #ffffff;
+            --green: #10B981;
+            --yellow: #F59E0B;
+            --red: #EF4444;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--white); min-height: 100vh; }
+
+        /* LOGIN */
+        #login-screen {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+        }
+        .login-card {
+            background: var(--gray-800); border-radius: 20px; padding: 2.5rem;
+            width: 100%; max-width: 380px; border: 1px solid var(--gray-700);
+        }
+        .login-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.25rem; }
+        .login-logo span { color: var(--blue); }
+        .login-sub { font-size: 0.85rem; color: var(--gray-400); margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--gray-400); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; background: var(--dark); border: 1px solid var(--gray-700);
+            border-radius: 8px; padding: 0.65rem 0.85rem; color: var(--white);
+            font-family: 'Inter', sans-serif; font-size: 0.9rem; transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--blue);
+        }
+        .form-group select option { background: var(--gray-800); }
+        .form-group textarea { resize: vertical; min-height: 70px; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-primary { background: var(--blue); color: white; width: 100%; justify-content: center; }
+        .btn-primary:hover { background: #2563EB; }
+        .btn-success { background: var(--green); color: white; }
+        .btn-success:hover { background: #059669; }
+        .btn-danger { background: transparent; color: var(--red); border: 1px solid var(--red); padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+        .btn-danger:hover { background: var(--red); color: white; }
+        .btn-edit { background: transparent; color: var(--blue); border: 1px solid var(--blue); padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+        .btn-edit:hover { background: var(--blue); color: white; }
+        .btn-sm { padding: 0.4rem 0.85rem; font-size: 0.82rem; }
+        .login-error { color: var(--red); font-size: 0.82rem; margin-top: 0.5rem; display: none; }
+
+        /* APP */
+        #app { display: none; }
+        header {
+            background: var(--gray-800); padding: 1rem 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--gray-700); position: sticky; top: 0; z-index: 100;
+        }
+        .header-logo { font-size: 1.2rem; font-weight: 800; }
+        .header-logo span { color: var(--blue); }
+        .header-sub { font-size: 0.75rem; color: var(--gray-400); }
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+        .logout-btn { background: transparent; border: 1px solid var(--gray-700); color: var(--gray-400); border-radius: 8px; padding: 0.4rem 0.85rem; font-size: 0.8rem; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+        .logout-btn:hover { border-color: var(--red); color: var(--red); }
+        .main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+        /* STATS */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card {
+            background: var(--gray-800); border-radius: 14px; padding: 1.25rem 1.5rem;
+            border: 1px solid var(--gray-700);
+        }
+        .stat-label { font-size: 0.75rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+        .stat-value { font-size: 1.6rem; font-weight: 800; }
+        .stat-value.blue { color: var(--blue); }
+        .stat-value.green { color: var(--green); }
+        .stat-value.yellow { color: var(--yellow); }
+        .stat-value.red { color: var(--red); }
+
+        /* TOOLBAR */
+        .toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+        .toolbar-title { font-size: 1.1rem; font-weight: 700; }
+        .toolbar-right { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+        .filter-select {
+            background: var(--gray-800); border: 1px solid var(--gray-700); color: var(--white);
+            border-radius: 8px; padding: 0.5rem 0.85rem; font-size: 0.85rem;
+            font-family: 'Inter', sans-serif; cursor: pointer;
+        }
+
+        /* TABLE */
+        .table-wrap { background: var(--gray-800); border-radius: 16px; border: 1px solid var(--gray-700); overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        thead { background: var(--gray-700); }
+        th { padding: 0.85rem 1rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-400); font-weight: 600; white-space: nowrap; }
+        td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--gray-700); vertical-align: middle; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.02); }
+        .empty-state { text-align: center; padding: 4rem 2rem; color: var(--gray-400); }
+        .empty-state i { font-size: 2.5rem; margin-bottom: 1rem; display: block; opacity: 0.4; }
+
+        /* BADGES */
+        .badge { display: inline-block; padding: 0.25rem 0.65rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+        .badge-green { background: rgba(16,185,129,0.15); color: var(--green); }
+        .badge-yellow { background: rgba(245,158,11,0.15); color: var(--yellow); }
+        .badge-blue { background: rgba(59,130,246,0.15); color: var(--blue); }
+        .badge-gray { background: rgba(156,163,175,0.15); color: var(--gray-400); }
+        .badge-red { background: rgba(239,68,68,0.15); color: var(--red); }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+            z-index: 1000; align-items: center; justify-content: center; padding: 1rem;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal {
+            background: var(--gray-800); border-radius: 20px; padding: 2rem;
+            width: 100%; max-width: 520px; border: 1px solid var(--gray-700);
+            max-height: 90vh; overflow-y: auto;
+        }
+        .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+        .modal-title { font-size: 1.1rem; font-weight: 700; }
+        .modal-close { background: none; border: none; color: var(--gray-400); font-size: 1.2rem; cursor: pointer; padding: 0.25rem; }
+        .modal-close:hover { color: var(--white); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        .commissie-preview {
+            background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3);
+            border-radius: 8px; padding: 0.75rem 1rem; margin: 0.5rem 0 1rem;
+            font-size: 0.9rem; color: var(--blue); font-weight: 600;
+        }
+        .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem; }
+        .btn-cancel { background: transparent; border: 1px solid var(--gray-700); color: var(--gray-400); }
+        .btn-cancel:hover { border-color: var(--gray-400); color: var(--white); }
+        .td-actions { display: flex; gap: 0.5rem; }
+
+        @media (max-width: 768px) {
+            .main { padding: 1rem; }
+            .form-row { grid-template-columns: 1fr; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 0.65rem 0.75rem; }
+            .stat-value { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+    <div class="login-card">
+        <div class="login-logo">Borg <span>Biz</span></div>
+        <div class="login-sub">Commissie Beheer — Inloggen</div>
+        <div class="form-group">
+            <label>Wachtwoord</label>
+            <input type="password" id="login-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+        </div>
+        <button class="btn btn-primary" onclick="doLogin()"><i class="fas fa-lock"></i> Inloggen</button>
+        <div class="login-error" id="login-error">Onjuist wachtwoord</div>
+    </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+    <header>
+        <div>
+            <div class="header-logo">Borg <span>Biz</span></div>
+            <div class="header-sub">Commissie Beheer</div>
+        </div>
+        <div class="header-right">
+            <button class="logout-btn" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Uitloggen</button>
+        </div>
+    </header>
+
+    <div class="main">
+        <!-- STATS -->
+        <div class="stats-grid" id="stats-grid"></div>
+
+        <!-- TOOLBAR -->
+        <div class="toolbar">
+            <div class="toolbar-title">Referrals overzicht</div>
+            <div class="toolbar-right">
+                <select class="filter-select" id="filter-deal" onchange="renderTable()">
+                    <option value="">Alle deal statussen</option>
+                    <option value="In behandeling">In behandeling</option>
+                    <option value="Akkoord">Akkoord</option>
+                    <option value="Afgerond">Afgerond</option>
+                </select>
+                <select class="filter-select" id="filter-commissie" onchange="renderTable()">
+                    <option value="">Alle commissies</option>
+                    <option value="Openstaand">Openstaand</option>
+                    <option value="Uitbetaald">Uitbetaald</option>
+                </select>
+                <button class="btn btn-success" onclick="openModal()">
+                    <i class="fas fa-plus"></i> Nieuwe referral
+                </button>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Doorverwijzer</th>
+                        <th>Klant</th>
+                        <th>Dienst</th>
+                        <th>Deal waarde</th>
+                        <th>%</th>
+                        <th>Commissie</th>
+                        <th>Deal status</th>
+                        <th>Commissie status</th>
+                        <th>Acties</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title" id="modal-title">Nieuwe referral</div>
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        </div>
+
+        <input type="hidden" id="edit-id">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Doorverwijzer naam *</label>
+                <input type="text" id="f-referrer-naam" placeholder="Jan de Vries">
+            </div>
+            <div class="form-group">
+                <label>Contactgegevens</label>
+                <input type="text" id="f-referrer-contact" placeholder="06-12345678">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Klant naam *</label>
+                <input type="text" id="f-klant-naam" placeholder="Naam bedrijf / persoon">
+            </div>
+            <div class="form-group">
+                <label>Dienst</label>
+                <select id="f-dienst">
+                    <option value="Website">Website</option>
+                    <option value="Website + Hosting">Website + Hosting</option>
+                    <option value="Hosting beheer">Hosting beheer</option>
+                    <option value="SEO">SEO</option>
+                    <option value="CRM / Odoo">CRM / Odoo</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Pakket">Pakket</option>
+                    <option value="Anders">Anders</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Deal waarde (€ excl. BTW) *</label>
+                <input type="number" id="f-deal-waarde" placeholder="1500" min="0" step="1" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+                <label>Commissie %</label>
+                <input type="number" id="f-commissie-pct" value="10" min="1" max="50" step="0.5" oninput="updatePreview()">
+            </div>
+        </div>
+
+        <div class="commissie-preview" id="commissie-preview">
+            <i class="fas fa-euro-sign"></i> Commissie: <span id="preview-bedrag">€ 0,00</span>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Deal status</label>
+                <select id="f-deal-status">
+                    <option value="In behandeling">In behandeling</option>
+                    <option value="Akkoord">Akkoord</option>
+                    <option value="Afgerond">Afgerond</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Commissie status</label>
+                <select id="f-commissie-status">
+                    <option value="Openstaand">Openstaand</option>
+                    <option value="Uitbetaald">Uitbetaald</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Notities</label>
+            <textarea id="f-notities" placeholder="Extra opmerkingen..."></textarea>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn btn-cancel" onclick="closeModal()">Annuleren</button>
+            <button class="btn btn-success" onclick="saveReferral()"><i class="fas fa-save"></i> Opslaan</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const WACHTWOORD = 'borgbiz2026';
+    const STORAGE_KEY = 'borgbiz_commissies';
+
+    function doLogin() {
+        const pw = document.getElementById('login-pw').value;
+        if (pw === WACHTWOORD) {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('app').style.display = 'block';
+            renderStats();
+            renderTable();
+        } else {
+            document.getElementById('login-error').style.display = 'block';
+        }
+    }
+
+    function doLogout() {
+        document.getElementById('login-screen').style.display = 'flex';
+        document.getElementById('app').style.display = 'none';
+        document.getElementById('login-pw').value = '';
+    }
+
+    function getData() {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    }
+
+    function saveData(data) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function formatEuro(amount) {
+        return '€ ' + Number(amount).toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function formatDatum(iso) {
+        const d = new Date(iso);
+        return d.toLocaleDateString('nl-NL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
+
+    function renderStats() {
+        const data = getData();
+        const totaalCommissie = data.reduce((s, r) => s + (r.commissieBedrag || 0), 0);
+        const uitbetaald = data.filter(r => r.commissieStatus === 'Uitbetaald').reduce((s, r) => s + (r.commissieBedrag || 0), 0);
+        const openstaand = totaalCommissie - uitbetaald;
+        const aantalDeals = data.filter(r => r.dealStatus === 'Afgerond').length;
+
+        document.getElementById('stats-grid').innerHTML = `
+            <div class="stat-card"><div class="stat-label">Totaal referrals</div><div class="stat-value blue">${data.length}</div></div>
+            <div class="stat-card"><div class="stat-label">Deals afgerond</div><div class="stat-value green">${aantalDeals}</div></div>
+            <div class="stat-card"><div class="stat-label">Totaal commissie</div><div class="stat-value blue">${formatEuro(totaalCommissie)}</div></div>
+            <div class="stat-card"><div class="stat-label">Openstaand</div><div class="stat-value yellow">${formatEuro(openstaand)}</div></div>
+            <div class="stat-card"><div class="stat-label">Uitbetaald</div><div class="stat-value green">${formatEuro(uitbetaald)}</div></div>
+        `;
+    }
+
+    function dealBadge(status) {
+        if (status === 'Afgerond') return `<span class="badge badge-green">${status}</span>`;
+        if (status === 'Akkoord') return `<span class="badge badge-blue">${status}</span>`;
+        return `<span class="badge badge-gray">${status}</span>`;
+    }
+
+    function commissieBadge(status) {
+        if (status === 'Uitbetaald') return `<span class="badge badge-green">${status}</span>`;
+        return `<span class="badge badge-yellow">${status}</span>`;
+    }
+
+    function renderTable() {
+        const data = getData();
+        const filterDeal = document.getElementById('filter-deal').value;
+        const filterCommissie = document.getElementById('filter-commissie').value;
+
+        const filtered = data.filter(r => {
+            if (filterDeal && r.dealStatus !== filterDeal) return false;
+            if (filterCommissie && r.commissieStatus !== filterCommissie) return false;
+            return true;
+        });
+
+        const tbody = document.getElementById('table-body');
+
+        if (filtered.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="10"><div class="empty-state"><i class="fas fa-handshake"></i>Nog geen referrals. Voeg er een toe!</div></td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = filtered.map(r => `
+            <tr>
+                <td>${formatDatum(r.datum)}</td>
+                <td>
+                    <div style="font-weight:600">${r.referrerNaam}</div>
+                    ${r.referrerContact ? `<div style="font-size:0.78rem;color:var(--gray-400)">${r.referrerContact}</div>` : ''}
+                </td>
+                <td>${r.klantNaam}</td>
+                <td><span class="badge badge-blue">${r.dienst}</span></td>
+                <td style="font-weight:600">${formatEuro(r.dealWaarde)}</td>
+                <td style="color:var(--gray-400)">${r.commissiePct}%</td>
+                <td style="font-weight:700;color:var(--green)">${formatEuro(r.commissieBedrag)}</td>
+                <td>${dealBadge(r.dealStatus)}</td>
+                <td>${commissieBadge(r.commissieStatus)}</td>
+                <td>
+                    <div class="td-actions">
+                        <button class="btn btn-edit" onclick="editReferral('${r.id}')"><i class="fas fa-pen"></i></button>
+                        <button class="btn btn-danger" onclick="deleteReferral('${r.id}')"><i class="fas fa-trash"></i></button>
+                    </div>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    function updatePreview() {
+        const waarde = parseFloat(document.getElementById('f-deal-waarde').value) || 0;
+        const pct = parseFloat(document.getElementById('f-commissie-pct').value) || 0;
+        const bedrag = waarde * (pct / 100);
+        document.getElementById('preview-bedrag').textContent = formatEuro(bedrag);
+    }
+
+    function openModal(id = null) {
+        document.getElementById('modal-overlay').classList.add('open');
+        document.getElementById('edit-id').value = '';
+        document.getElementById('modal-title').textContent = 'Nieuwe referral';
+        clearForm();
+
+        if (id) {
+            const data = getData();
+            const r = data.find(x => x.id === id);
+            if (!r) return;
+            document.getElementById('edit-id').value = id;
+            document.getElementById('modal-title').textContent = 'Referral bewerken';
+            document.getElementById('f-referrer-naam').value = r.referrerNaam;
+            document.getElementById('f-referrer-contact').value = r.referrerContact || '';
+            document.getElementById('f-klant-naam').value = r.klantNaam;
+            document.getElementById('f-dienst').value = r.dienst;
+            document.getElementById('f-deal-waarde').value = r.dealWaarde;
+            document.getElementById('f-commissie-pct').value = r.commissiePct;
+            document.getElementById('f-deal-status').value = r.dealStatus;
+            document.getElementById('f-commissie-status').value = r.commissieStatus;
+            document.getElementById('f-notities').value = r.notities || '';
+            updatePreview();
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('modal-overlay').classList.remove('open');
+    }
+
+    function clearForm() {
+        ['f-referrer-naam','f-referrer-contact','f-klant-naam','f-notities'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('f-dienst').value = 'Website';
+        document.getElementById('f-deal-waarde').value = '';
+        document.getElementById('f-commissie-pct').value = '10';
+        document.getElementById('f-deal-status').value = 'In behandeling';
+        document.getElementById('f-commissie-status').value = 'Openstaand';
+        document.getElementById('preview-bedrag').textContent = '€ 0,00';
+    }
+
+    function saveReferral() {
+        const referrerNaam = document.getElementById('f-referrer-naam').value.trim();
+        const klantNaam = document.getElementById('f-klant-naam').value.trim();
+        const dealWaarde = parseFloat(document.getElementById('f-deal-waarde').value);
+
+        if (!referrerNaam || !klantNaam || isNaN(dealWaarde)) {
+            alert('Vul minstens doorverwijzer, klant en deal waarde in.');
+            return;
+        }
+
+        const commissiePct = parseFloat(document.getElementById('f-commissie-pct').value) || 10;
+        const commissieBedrag = dealWaarde * (commissiePct / 100);
+
+        const referral = {
+            id: document.getElementById('edit-id').value || Date.now().toString(),
+            datum: new Date().toISOString().split('T')[0],
+            referrerNaam,
+            referrerContact: document.getElementById('f-referrer-contact').value.trim(),
+            klantNaam,
+            dienst: document.getElementById('f-dienst').value,
+            dealWaarde,
+            commissiePct,
+            commissieBedrag,
+            dealStatus: document.getElementById('f-deal-status').value,
+            commissieStatus: document.getElementById('f-commissie-status').value,
+            notities: document.getElementById('f-notities').value.trim()
+        };
+
+        const data = getData();
+        const editId = document.getElementById('edit-id').value;
+
+        if (editId) {
+            const idx = data.findIndex(x => x.id === editId);
+            if (idx !== -1) {
+                referral.datum = data[idx].datum;
+                data[idx] = referral;
+            }
+        } else {
+            data.unshift(referral);
+        }
+
+        saveData(data);
+        closeModal();
+        renderStats();
+        renderTable();
+    }
+
+    function editReferral(id) { openModal(id); }
+
+    function deleteReferral(id) {
+        if (!confirm('Deze referral verwijderen?')) return;
+        const data = getData().filter(x => x.id !== id);
+        saveData(data);
+        renderStats();
+        renderTable();
+    }
+
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    document.getElementById('login-pw').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') doLogin();
+    });
+</script>
+</body>
+</html>

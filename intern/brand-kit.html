@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borg Biz — Brand Kit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #F8FAFC; color: #1E293B; padding: 2rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .page-title { font-size: 2rem; font-weight: 900; color: #1E3A8A; margin-bottom: 0.25rem; }
+        .page-sub { font-size: 0.9rem; color: #64748B; margin-bottom: 3rem; }
+
+        .sectie { margin-bottom: 3rem; }
+        .sectie-titel { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #94A3B8; margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0; }
+
+        /* KLEUREN */
+        .kleuren-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+        .kleur-item { border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        .kleur-vak { height: 80px; }
+        .kleur-info { background: #fff; padding: 0.75rem; }
+        .kleur-naam { font-size: 0.78rem; font-weight: 700; color: #1E293B; }
+        .kleur-hex { font-size: 0.72rem; color: #64748B; margin-top: 0.15rem; font-family: monospace; cursor: pointer; }
+        .kleur-hex:hover { color: #3B82F6; }
+        .kleur-gebruik { font-size: 0.68rem; color: #94A3B8; margin-top: 0.25rem; }
+
+        /* TYPOGRAFIE */
+        .font-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .font-item { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .font-voorbeeld { font-family: 'Inter', sans-serif; margin-bottom: 1rem; }
+        .font-naam { font-size: 0.75rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 1.5px; }
+        .font-detail { font-size: 0.72rem; color: #94A3B8; margin-top: 0.25rem; }
+        .font-schaal { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 1rem; }
+        .font-schaal span { font-family: 'Inter', sans-serif; color: #1E293B; }
+
+        /* LOGO */
+        .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .logo-item { border-radius: 12px; padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        .logo-item.licht { background: #fff; border: 1px solid #E2E8F0; }
+        .logo-item.donker { background: #111827; }
+        .logo-item.blauw { background: #1E3A8A; }
+        .logo-tekst { font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 900; letter-spacing: -0.5px; }
+        .logo-tekst .accent { color: #3B82F6; }
+        .logo-tekst.wit { color: #fff; }
+        .logo-tekst.wit .accent { color: #60A5FA; }
+        .logo-tagline { font-size: 0.62rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; }
+        .logo-label { font-size: 0.68rem; color: #94A3B8; margin-top: 0.5rem; }
+
+        /* TOON */
+        .toon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .toon-item { background: #fff; border-radius: 12px; padding: 1.25rem 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 3px solid #3B82F6; }
+        .toon-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #3B82F6; margin-bottom: 0.5rem; }
+        .toon-tekst { font-size: 0.85rem; color: #475569; line-height: 1.6; }
+
+        /* CANVA */
+        .canva-tabel { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .canva-tabel th { background: #1E3A8A; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.85rem 1rem; text-align: left; }
+        .canva-tabel td { padding: 0.75rem 1rem; font-size: 0.83rem; color: #475569; border-bottom: 1px solid #F1F5F9; }
+        .canva-tabel tr:last-child td { border: none; }
+        .canva-tabel tr:hover td { background: #F8FAFC; }
+        .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 0.5rem; vertical-align: middle; }
+        code { font-family: monospace; background: #F1F5F9; padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.82rem; color: #1E3A8A; }
+
+        /* SOCIALMEDIA FORMATEN */
+        .formaat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+        .formaat-item { background: #fff; border-radius: 12px; padding: 1.25rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .formaat-naam { font-size: 0.82rem; font-weight: 700; color: #1E293B; margin-bottom: 0.25rem; }
+        .formaat-maat { font-size: 0.75rem; color: #3B82F6; font-weight: 600; margin-bottom: 0.35rem; }
+        .formaat-gebruik { font-size: 0.72rem; color: #94A3B8; }
+
+        .copy-tip { font-size: 0.72rem; color: #94A3B8; margin-top: 0.75rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-title">Borg Biz — Brand Kit</div>
+    <p class="page-sub">Referentiedocument voor Canva, social media en alle uitingen. Bijgewerkt mei 2026.</p>
+
+    <!-- KLEUREN -->
+    <div class="sectie">
+        <div class="sectie-titel">Kleuren</div>
+        <div class="kleuren-grid">
+            <div class="kleur-item">
+                <div class="kleur-vak" style="background:#1E3A8A"></div>
+                <div class="kleur-info">
+                    <div class="kleur-naam">Primair Donker</div>
+                    <div class="kleur-hex" onclick="kopieer(this)">#1E3A8A</div>
+                    <div class="kleur-gebruik">Headers, achtergrond</div>
+                </div>
+            </div>
+            <div class="kleur-item">
+                <div class="kleur-vak" style="background:#3B82F6"></div>
+                <div class="kleur-info">
+                    <div class="kleur-naam">Primair Blauw</div>
+                    <div class="kleur-hex" onclick="kopieer(this)">#3B82F6</div>
+                    <div class="kleur-gebruik">Knoppen, accenten</div>
+                </div>
+            </div>
+            <div class="kleur-item">
+                <div class="kleur-vak" style="background:#60A5FA"></div>
+                <div class="kleur-info">
+                    <div class="kleur-naam">Licht Blauw</div>
+                    <div class="kleur-hex" onclick="kopieer(this)">#60A5FA</div>
+                    <div class="kleur-gebruik">Highlights, iconen</div>
+                </div>
+            </div>
+            <div class="kleur-item">
+                <div class="kleur-vak" style="background:#DBEAFE"></div>
+                <div class="kleur-info">
+                    <div class="kleur-naam">Blauw Licht</div>
+                    <div class="kleur-hex" onclick="kopieer(this)">#DBEAFE</div>
+                    <div class="kleur-gebruik">Achtergrond tags</div>
+                </div>
+            </div>
+            <div class="kleur-item">
+                <div class="kleur-vak" style="background:#111827"></div>
+                <div class="kleur-info">
+                    <div class="kleur-naam">Donker</div>
+                    <div class="kleur-hex" onclick="kopieer(this)">#111827</div>
+                    <div class="kleur-gebruik">Donkere achtergrond</div>
+                </div>
+            </div>
+            <div class="kleur-item">
+                <div class="kleur-vak" style="background:#FFFFFF; border: 1px solid #E2E8F0;"></div>
+                <div class="kleur-info">
+                    <div class="kleur-naam">Wit</div>
+                    <div class="kleur-hex" onclick="kopieer(this)">#FFFFFF</div>
+                    <div class="kleur-gebruik">Tekst op donker</div>
+                </div>
+            </div>
+            <div class="kleur-item">
+                <div class="kleur-vak" style="background:#F3F4F6"></div>
+                <div class="kleur-info">
+                    <div class="kleur-naam">Grijs Licht</div>
+                    <div class="kleur-hex" onclick="kopieer(this)">#F3F4F6</div>
+                    <div class="kleur-gebruik">Lichte achtergrond</div>
+                </div>
+            </div>
+            <div class="kleur-item">
+                <div class="kleur-vak" style="background:#4B5563"></div>
+                <div class="kleur-info">
+                    <div class="kleur-naam">Grijs</div>
+                    <div class="kleur-hex" onclick="kopieer(this)">#4B5563</div>
+                    <div class="kleur-gebruik">Subtekst</div>
+                </div>
+            </div>
+        </div>
+        <p class="copy-tip">Klik op een hex code om te kopiëren.</p>
+    </div>
+
+    <!-- TYPOGRAFIE -->
+    <div class="sectie">
+        <div class="sectie-titel">Typografie</div>
+        <div class="font-grid">
+            <div class="font-item">
+                <div class="font-voorbeeld" style="font-size:2rem; font-weight:900; color:#1E3A8A;">Inter Black</div>
+                <div class="font-naam">Inter</div>
+                <div class="font-detail">Gewicht: 900 (Black) — Titels, logo, headers</div>
+                <div class="font-schaal">
+                    <span style="font-size:1.8rem; font-weight:900; color:#111827;">H1 — 1.8rem / 900</span>
+                    <span style="font-size:1.3rem; font-weight:800; color:#111827;">H2 — 1.3rem / 800</span>
+                    <span style="font-size:1rem; font-weight:700; color:#111827;">H3 — 1rem / 700</span>
+                </div>
+            </div>
+            <div class="font-item">
+                <div class="font-voorbeeld" style="font-size:1.1rem; font-weight:400; color:#4B5563; line-height:1.7;">Inter Regular voor bodytekst. Leesbaar, clean en modern. Gebruik voor paragrafen en langere teksten.</div>
+                <div class="font-naam">Inter Regular</div>
+                <div class="font-detail">Gewicht: 400–600 — Bodytekst, captions</div>
+                <div class="font-schaal">
+                    <span style="font-size:1rem; font-weight:400; color:#4B5563;">Body — 1rem / 400</span>
+                    <span style="font-size:0.85rem; font-weight:500; color:#4B5563;">Small — 0.85rem / 500</span>
+                    <span style="font-size:0.72rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#94A3B8;">LABEL — 0.72rem / 600 CAPS</span>
+                </div>
+            </div>
+        </div>
+        <p class="copy-tip" style="margin-top:0.75rem;">Google Fonts: <code>Inter</code> — gratis te gebruiken in Canva. Zoek op "Inter" in het Canva font menu.</p>
+    </div>
+
+    <!-- LOGO -->
+    <div class="sectie">
+        <div class="sectie-titel">Logo varianten</div>
+        <div class="logo-grid">
+            <div class="logo-item licht">
+                <div class="logo-tekst">Borg <span class="accent">Biz</span></div>
+                <div class="logo-tagline" style="color:#3B82F6;">Digitale groei</div>
+                <div class="logo-label">Op wit/licht</div>
+            </div>
+            <div class="logo-item donker">
+                <div class="logo-tekst wit">Borg <span class="accent">Biz</span></div>
+                <div class="logo-tagline" style="color:#60A5FA;">Digitale groei</div>
+                <div class="logo-label">Op donker</div>
+            </div>
+            <div class="logo-item blauw">
+                <div class="logo-tekst wit">Borg <span class="accent">Biz</span></div>
+                <div class="logo-tagline" style="color:#BFDBFE;">Digitale groei</div>
+                <div class="logo-label">Op blauw</div>
+            </div>
+        </div>
+        <p class="copy-tip">Font: Inter Black (900). "Biz" altijd in #3B82F6. Nooit vervormen of roteren.</p>
+    </div>
+
+    <!-- CANVA INVOER -->
+    <div class="sectie">
+        <div class="sectie-titel">Canva Brand Kit — Invoer</div>
+        <table class="canva-tabel">
+            <thead>
+                <tr>
+                    <th>Veld in Canva</th>
+                    <th>Waarde</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Brand naam</strong></td><td>Borg Biz</td></tr>
+                <tr><td><strong>Logo font</strong></td><td>Inter Black (gewicht 900)</td></tr>
+                <tr><td><strong>Body font</strong></td><td>Inter Regular (gewicht 400)</td></tr>
+                <tr><td><strong>Primaire kleur</strong></td><td><span class="dot" style="background:#3B82F6"></span><code>#3B82F6</code></td></tr>
+                <tr><td><strong>Secundaire kleur</strong></td><td><span class="dot" style="background:#1E3A8A"></span><code>#1E3A8A</code></td></tr>
+                <tr><td><strong>Donkere kleur</strong></td><td><span class="dot" style="background:#111827"></span><code>#111827</code></td></tr>
+                <tr><td><strong>Lichte kleur</strong></td><td><span class="dot" style="background:#DBEAFE"></span><code>#DBEAFE</code></td></tr>
+                <tr><td><strong>Neutraal</strong></td><td><span class="dot" style="background:#F3F4F6; border:1px solid #E2E8F0"></span><code>#F3F4F6</code></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- SOCIAL MEDIA FORMATEN -->
+    <div class="sectie">
+        <div class="sectie-titel">Social media formaten</div>
+        <div class="formaat-grid">
+            <div class="formaat-item">
+                <div class="formaat-naam">Instagram Post</div>
+                <div class="formaat-maat">1080 × 1080 px</div>
+                <div class="formaat-gebruik">Feed, vierkant</div>
+            </div>
+            <div class="formaat-item">
+                <div class="formaat-naam">Instagram Story / Reel</div>
+                <div class="formaat-maat">1080 × 1920 px</div>
+                <div class="formaat-gebruik">Stories, Reels</div>
+            </div>
+            <div class="formaat-item">
+                <div class="formaat-naam">LinkedIn Post</div>
+                <div class="formaat-maat">1200 × 627 px</div>
+                <div class="formaat-gebruik">Feed LinkedIn</div>
+            </div>
+            <div class="formaat-item">
+                <div class="formaat-naam">LinkedIn Banner</div>
+                <div class="formaat-maat">1584 × 396 px</div>
+                <div class="formaat-gebruik">Profielbanner</div>
+            </div>
+            <div class="formaat-item">
+                <div class="formaat-naam">Facebook Post</div>
+                <div class="formaat-maat">1200 × 630 px</div>
+                <div class="formaat-gebruik">Feed Facebook</div>
+            </div>
+            <div class="formaat-item">
+                <div class="formaat-naam">Profielfoto</div>
+                <div class="formaat-maat">800 × 800 px</div>
+                <div class="formaat-gebruik">Alle platformen</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOON VAN STEM -->
+    <div class="sectie">
+        <div class="sectie-titel">Toon van stem</div>
+        <div class="toon-grid">
+            <div class="toon-item">
+                <div class="toon-label">Zakelijk maar informeel</div>
+                <div class="toon-tekst">Professioneel zonder stijf te zijn. Schrijf zoals je zou praten tegen een ondernemer bij een kop koffie.</div>
+            </div>
+            <div class="toon-item">
+                <div class="toon-label">Kort en direct</div>
+                <div class="toon-tekst">Geen lange zinnen, geen jargon. Zeg wat je bedoelt. Eén idee per zin.</div>
+            </div>
+            <div class="toon-item">
+                <div class="toon-label">Persoonlijk</div>
+                <div class="toon-tekst">Schrijf in de eerste persoon. "Ik help ondernemers" werkt beter dan "Borg Biz helpt ondernemers".</div>
+            </div>
+            <div class="toon-item">
+                <div class="toon-label">Nooit em dashes</div>
+                <div class="toon-tekst">Gebruik altijd een komma in plaats van een em dash (—). Dit geldt voor alle uitingen en captions.</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function kopieer(el) {
+    navigator.clipboard.writeText(el.textContent).then(() => {
+        const orig = el.textContent;
+        el.textContent = 'Gekopieerd!';
+        setTimeout(() => el.textContent = orig, 1500);
+    });
+}
+</script>
+</body>
+</html>
