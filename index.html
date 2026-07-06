@@ -17,7 +17,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media=&quot;all&quot;">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
 
     <style>
         :root {
@@ -540,7 +541,7 @@
         footer { background: var(--dark); color: white; padding: 3.5rem 2rem 2rem; }
         .footer-inner { max-width: 1200px; margin: 0 auto; }
         .footer-top {
-            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+            display: grid; grid-template-columns: 1.6fr 1.1fr 1.1fr 0.9fr; gap: 2.5rem;
             padding-bottom: 2.5rem;
             border-bottom: 1px solid rgba(255,255,255,0.08);
             margin-bottom: 2rem;
@@ -682,14 +683,15 @@
 </header>
 
 <!-- ===== HERO ===== -->
+<main id="main">
 <section id="hero" aria-labelledby="hero-titel">
     <div class="hero-content">
         <div>
             <div class="hero-badge">
-                <span class="hero-badge-sterren" aria-hidden="true">★★★★★</span> 4.9 op Google · Emmen, Drenthe
+                <span class="hero-badge-sterren" aria-hidden="true">★★★★★</span> Aanbevolen door lokale ondernemers · Emmen
             </div>
             <h1 class="hero-title" id="hero-titel">
-                Websites &amp; digitale systemen die <span>klanten opleveren</span>
+                Websites &amp; digitale systemen die <span>klanten en tijd opleveren</span>
             </h1>
             <p class="hero-subtitle">
                 Borg Biz regelt alles digitaal voor lokale ondernemers: website, vindbaarheid,
@@ -705,11 +707,7 @@
                     Bekijk pakketten
                 </a>
             </div>
-            <p class="hero-microtrust">
-                <i class="fas fa-check-circle" aria-hidden="true"></i> Vrijblijvend
-                <i class="fas fa-check-circle" aria-hidden="true"></i> Reactie binnen 24 uur
-                <i class="fas fa-check-circle" aria-hidden="true"></i> Geen verborgen kosten
-            </p>
+            <p class="hero-microtrust"><span class="mt-item"><i class="fas fa-check-circle" aria-hidden="true"></i> Vrijblijvend</span><span class="mt-item"><i class="fas fa-check-circle" aria-hidden="true"></i> Reactie binnen 24 uur</span><span class="mt-item"><i class="fas fa-check-circle" aria-hidden="true"></i> Geen verborgen kosten</span></p>
             <div class="hero-stats">
                 <div>
                     <div class="stat-number">8+</div>
@@ -746,10 +744,10 @@
     <div class="container">
         <p class="section-label">Vertrouwd door ondernemers in Drenthe</p>
         <h2 class="section-title" id="reviews-titel">Waarom ondernemers voor Borg Biz kiezen</h2>
-        <p class="section-subtitle"><span class="reviews-score">★★★★★ 4.9</span> gemiddeld op Google. Dit zeggen klanten over de samenwerking.</p>
+        <p class="section-subtitle"><span class="reviews-score">★★★★★</span> Dit zeggen ondernemers over de samenwerking met Borg Biz.</p>
         <div class="reviews-grid">
             <div class="review-card">
-                <div class="review-stars" aria-label="5 sterren">
+                <div class="review-stars" role="img" aria-label="5 sterren">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
                 <p class="review-tekst">"Binnen een week stond mijn website live. Professioneel, snel en precies wat ik voor ogen had. Ik hoefde nergens naar om te kijken, Borg Biz regelde alles."</p>
@@ -762,7 +760,7 @@
                 </div>
             </div>
             <div class="review-card">
-                <div class="review-stars" aria-label="5 sterren">
+                <div class="review-stars" role="img" aria-label="5 sterren">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
                 <p class="review-tekst">"Eindelijk een partij die gewoon in begrijpelijke taal uitlegt wat ze doen. Geen vaag technisch gedoe, gewoon resultaat. Mijn contactformulier stuurt leads nu direct naar mijn CRM."</p>
@@ -775,7 +773,7 @@
                 </div>
             </div>
             <div class="review-card">
-                <div class="review-stars" aria-label="5 sterren">
+                <div class="review-stars" role="img" aria-label="5 sterren">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
                 <p class="review-tekst">"Goede prijs, persoonlijke aanpak en altijd bereikbaar. Mijn oude site was een ramp, nu ben ik er trots op. Aanrader voor elke ondernemer in de regio."</p>
@@ -906,7 +904,7 @@
 
         <div class="pricing-social-proof">
             <span class="pricing-sterren">★★★★★</span>
-            <span class="pricing-score">4.9 · 8 reviews</span>
+            <span class="pricing-score">Aanbevolen door klanten</span>
             <span class="pricing-klanten">· Actief voor lokale ondernemers in Drenthe</span>
         </div>
 
@@ -1005,7 +1003,7 @@
     <div class="container">
         <div class="over-ons-inner">
             <div class="eigenaar-card">
-                <div class="eigenaar-avatar-wrap"><img class="eigenaar-avatar" src="images/robbin-maatman-2.webp" alt="Robbin Maatman, oprichter van Borg Biz"></div>
+                <div class="eigenaar-avatar-wrap"><img class="eigenaar-avatar" loading="lazy" decoding="async" src="images/robbin-maatman-2.webp" alt="Robbin Maatman, oprichter van Borg Biz"></div>
                 <p class="eigenaar-naam">Robbin Maatman</p>
                 <p class="eigenaar-titel">Oprichter van Borg Biz</p>
                 <div class="eigenaar-tags">
@@ -1096,7 +1094,7 @@
 
             <div style="background:white; border-radius:16px; overflow:hidden; border:1px solid #E5E7EB; transition:all 0.3s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 40px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
                 <div style="overflow:hidden; height:200px;">
-                    <img src="images/project-dj-robbin-maatman.png" alt="Website DJ Robbin Maatman" style="width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''">
+                    <img src="images/project-dj-robbin-maatman.jpg" alt="Website DJ Robbin Maatman" width="900" height="505" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''">
                 </div>
                 <div style="padding:1.5rem;">
                     <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
@@ -1113,7 +1111,7 @@
 
             <div style="background:white; border-radius:16px; overflow:hidden; border:1px solid #E5E7EB; transition:all 0.3s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 40px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
                 <div style="overflow:hidden; height:200px;">
-                    <img src="images/project-licht-geluid-maatman.png" alt="Website Licht en Geluid Maatman" style="width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''">
+                    <img src="images/project-licht-geluid-maatman.jpg" alt="Website Licht en Geluid Maatman" width="900" height="507" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''">
                 </div>
                 <div style="padding:1.5rem;">
                     <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
@@ -1307,45 +1305,65 @@
 <div id="privacy"></div>
 
 <!-- ===== FOOTER ===== -->
+</main>
+
 <footer>
     <div class="footer-inner">
+        <div class="footer-cta">
+            <div>
+                <p class="footer-cta-titel">Klaar om digitaal te groeien?</p>
+                <p class="footer-cta-sub">Plan een gratis adviesgesprek. Binnen 24 uur reactie, geheel vrijblijvend.</p>
+            </div>
+            <a href="#contact" class="btn-primary">
+                <i class="fas fa-arrow-right" aria-hidden="true"></i> Plan gratis gesprek
+            </a>
+        </div>
+
         <div class="footer-top">
             <div>
                 <p class="footer-logo">Borg <span>Biz</span></p>
                 <p class="footer-desc">Digitale groei voor lokale ondernemers in Emmen en omgeving. Van website tot CRM, alles op één plek geregeld.</p>
+                <p class="footer-sterren" aria-hidden="true">★★★★★</p>
+                <p class="footer-sterren-sub">Aanbevolen door lokale ondernemers</p>
             </div>
             <div class="footer-col">
-                <h4>Diensten</h4>
+                <h4>Contact</h4>
+                <ul class="footer-contact">
+                    <li><a href="tel:+31657803273"><i class="fas fa-phone" aria-hidden="true"></i> 06 57 80 32 73</a></li>
+                    <li><a href="mailto:info@borgbiz.nl"><i class="fas fa-envelope" aria-hidden="true"></i> info@borgbiz.nl</a></li>
+                    <li><a href="https://wa.me/31657803273" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp ons</a></li>
+                    <li><span><i class="fas fa-location-dot" aria-hidden="true"></i> Emmen, Drenthe</span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Populaire diensten</h4>
                 <ul>
                     <li><a href="#dienst-website">Website &amp; Landingspagina</a></li>
-                    <li><a href="#dienst-seo">SEO &amp; Vindbaarheid</a></li>
-                    <li><a href="#dienst-marketing">Marketing</a></li>
-                    <li><a href="#dienst-crm">CRM Systeem</a></li>
-                    <li><a href="#dienst-boekhouding">Boekhouding</a></li>
-                    <li><a href="#dienst-hosting">Hosting &amp; Beheer</a></li>
-                    <li><a href="#dienst-whatsapp">WhatsApp Automatisering</a></li>
-                    <li><a href="#dienst-blog">Blog &amp; Content</a></li>
                     <li><a href="#dienst-webshop">Webshop</a></li>
-                    <li><a href="#dienst-leadscraper">Lead Scraper</a></li>
-                    <li><a href="#dienst-ai">AI Gesprek Analyseerder</a></li>
-                    <li><a href="#dienst-verhuur">Verhuur &amp; Evenementen</a></li>
+                    <li><a href="#dienst-seo">SEO &amp; Vindbaarheid</a></li>
+                    <li><a href="#dienst-marketing">Marketing &amp; Advertenties</a></li>
+                    <li><a href="#dienst-crm">CRM Systeem</a></li>
+                    <li><a href="#diensten" class="footer-alle">Alle 12 diensten <i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Bedrijf</h4>
                 <ul>
+                    <li><a href="#pricing">Pakketten</a></li>
+                    <li><a href="#projecten">Projecten</a></li>
                     <li><a href="#over-ons">Over Ons</a></li>
-                    <li><a href="#contact">Contact</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="privacy.html">Privacyverklaring</a></li>
-                    <li><a href="privacy.html#cookies">Cookiebeleid</a></li>
-                    <li><a href="algemenevoorwaarden.html">Algemene Voorwaarden</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Borg Biz. Alle rechten voorbehouden.</p>
-            <p>Powered by <a href="https://borgbiz.nl" rel="noopener noreferrer">Borg Biz</a></p>
+            <p>© 2026 Borg Biz · Met <span class="footer-hart">♥</span> gebouwd in Emmen</p>
+            <div class="footer-legal">
+                <a href="privacy.html">Privacy</a>
+                <a href="privacy.html#cookies">Cookies</a>
+                <a href="algemenevoorwaarden.html">Algemene Voorwaarden</a>
+            </div>
         </div>
     </div>
 </footer>
@@ -1642,23 +1660,60 @@
     }
 
     /* ======= CONVERSIE UPGRADE ======= */
-    /* Hero: sterren badge + micro-trust */
+    /* Hero: sterren badge + micro-trust (strak uitgelijnd) */
     .hero-badge-sterren { color: #FACC15; letter-spacing: 2px; }
     .hero-microtrust {
-        display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+        display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem;
         margin-top: 1.25rem;
-        color: rgba(255,255,255,0.65); font-size: 0.85rem; font-weight: 500;
+        color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 500;
     }
-    .hero-microtrust i { color: #4ADE80; margin-right: 0.4rem; }
+    .hero-microtrust .mt-item {
+        display: inline-flex; align-items: center; gap: 0.45rem;
+        white-space: nowrap;
+    }
+    .hero-microtrust i { color: #4ADE80; font-size: 0.95rem; }
 
     /* Reviews: score in subtitle + Google link */
     .reviews-score { color: #F59E0B; font-weight: 800; }
     .reviews-cta { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
     .reviews-google-link {
-        color: var(--gray-600); font-size: 0.9rem; text-decoration: none;
-        border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s;
+        color: var(--gray-600); font-size: 0.9rem;
+        text-decoration: underline; text-underline-offset: 3px;
+        transition: color 0.2s;
     }
-    .reviews-google-link:hover { color: var(--blue-600); border-color: var(--blue-600); }
+    .reviews-google-link:hover { color: var(--blue-600); }
+
+    /* ======= FOOTER UPGRADE ======= */
+    .footer-cta {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 1.5rem; flex-wrap: wrap;
+        background: linear-gradient(135deg, rgba(37,99,235,0.18), rgba(30,58,138,0.28));
+        border: 1px solid rgba(59,130,246,0.35);
+        border-radius: 16px;
+        padding: 1.75rem 2rem;
+        margin-bottom: 3rem;
+    }
+    .footer-cta-titel { font-size: 1.3rem; font-weight: 800; color: white; margin-bottom: 0.25rem; }
+    .footer-cta-sub { color: rgba(255,255,255,0.75); font-size: 0.92rem; }
+    .footer-sterren { color: #FACC15; letter-spacing: 3px; margin-top: 1rem; font-size: 1.05rem; }
+    .footer-sterren-sub { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 0.25rem; }
+    .footer-contact li a, .footer-contact li span {
+        display: inline-flex; align-items: center; gap: 0.6rem;
+    }
+    .footer-contact i { color: var(--blue-400); width: 16px; text-align: center; }
+    .footer-alle { font-weight: 600; color: var(--blue-400) !important; }
+    .footer-alle i { font-size: 0.75rem; transition: transform 0.2s; }
+    .footer-alle:hover i { transform: translateX(4px); }
+    .footer-hart { color: #F87171; }
+    .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-legal a {
+        color: rgba(255,255,255,0.55); text-decoration: underline;
+        text-underline-offset: 3px; font-size: 0.85rem; transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: white; }
+    @media (max-width: 700px) {
+        .footer-cta { flex-direction: column; align-items: flex-start; }
+    }
 
     /* Diensten: compacter zonder prijzen */
     .dienst-card { padding: 1.5rem; }
