@@ -1850,5 +1850,42 @@
     onScroll();
 })();
 </script>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div id="cookieBanner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:linear-gradient(135deg, #1E3A8A, #1E40AF); color:white; padding:1rem 1.5rem; box-shadow:0 -4px 20px rgba(0,0,0,0.15); z-index:9999; font-family:'Inter',sans-serif; border-top:2px solid rgba(59,130,246,0.3);">
+    <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
+        <div style="flex:1; min-width:250px;">
+            <p style="margin:0; font-size:0.9rem; line-height:1.5;">
+                🍪 <strong>Wij respecteren je privacy</strong> - We gebruiken alleen functionele cookies, geen tracking.
+                <a href="privacy.html" style="color:#93C5FD; text-decoration:underline; margin-left:0.5rem;">Meer info</a>
+            </p>
+        </div>
+        <button onclick="acceptCookies()" style="background:#3B82F6; color:white; border:none; padding:0.6rem 1.5rem; border-radius:8px; font-weight:600; font-size:0.9rem; cursor:pointer; transition:all 0.2s; white-space:nowrap; font-family:'Inter',sans-serif;">
+            Begrepen ✓
+        </button>
+    </div>
+</div>
+
+<script>
+(function() {
+    // Check of cookie banner al geaccepteerd is
+    if (!localStorage.getItem('bbCookieAccepted')) {
+        document.getElementById('cookieBanner').style.display = 'block';
+    }
+
+    // Accepteer functie
+    window.acceptCookies = function() {
+        localStorage.setItem('bbCookieAccepted', 'true');
+        var banner = document.getElementById('cookieBanner');
+        banner.style.opacity = '0';
+        banner.style.transform = 'translateY(100%)';
+        banner.style.transition = 'all 0.3s ease';
+        setTimeout(function() {
+            banner.style.display = 'none';
+        }, 300);
+    };
+})();
+</script>
+
 </body>
 </html>
