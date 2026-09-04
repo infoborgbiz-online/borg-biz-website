@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /krant.html
+Disallow: /admin-commissie.html
+Disallow: /intern/
 
 Sitemap: https://borgbiz.nl/sitemap.xml
